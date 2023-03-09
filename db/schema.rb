@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_308_214_713) do
+ActiveRecord::Schema[7.0].define(version: 20_230_309_164_749) do
   create_table 'addresses', force: :cascade do |t|
     t.string 'address_line1'
     t.string 'address_line2'
@@ -21,11 +21,10 @@ ActiveRecord::Schema[7.0].define(version: 20_230_308_214_713) do
     t.string 'state'
     t.string 'zip'
     t.date 'effective_start_date'
-    t.string 'addressable_type'
-    t.bigint 'addressable_id'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.index %w[addressable_type addressable_id], name: 'index_addresses_on_addressable'
+    t.bigint 'clients_id'
+    t.index ['clients_id'], name: 'index_addresses_on_clients_id'
   end
 
   create_table 'cafas_pecfases', force: :cascade do |t|
@@ -117,14 +116,6 @@ ActiveRecord::Schema[7.0].define(version: 20_230_308_214_713) do
     t.datetime 'updated_at', null: false
   end
 
-  create_table 'emails', force: :cascade do |t|
-    t.string 'address'
-    t.bigint 'office_location_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['office_location_id'], name: 'index_emails_on_office_location_id'
-  end
-
   create_table 'episodes', force: :cascade do |t|
     t.string 'episode_key'
     t.string 'provider_id'
@@ -166,9 +157,8 @@ ActiveRecord::Schema[7.0].define(version: 20_230_308_214_713) do
     t.string 'phone_id'
     t.string 'client_key'
     t.date 'effective_start_date'
-    t.string 'phonable_type'
-    t.bigint 'phonable_id'
-    t.index %w[phonable_type phonable_id], name: 'index_phones_on_phonable'
+    t.bigint 'clients_id'
+    t.index ['clients_id'], name: 'index_phones_on_clients_id'
   end
 
   create_table 'substance_uses', force: :cascade do |t|
@@ -190,4 +180,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_308_214_713) do
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
   end
+
+  add_foreign_key 'addresses', 'clients', column: 'clients_id'
+  add_foreign_key 'phones', 'clients', column: 'clients_id'
 end

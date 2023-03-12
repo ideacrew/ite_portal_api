@@ -10,6 +10,8 @@ module ProviderGateway
       has_many :clinical_profiles, class_name: 'ProviderGateway::Api::ClinicalProfile'
       has_many :phones, as: :phonable
       has_many :addresses, as: :addressable
+
+      validates_presence_of :client_id, :first_name, :last_name, :ssn, :dob, :gender, :race, :ethnicity, :primary_language
     end
   end
 end

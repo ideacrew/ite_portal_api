@@ -6,6 +6,8 @@ module ProviderGateway
     class Dla20 < ApplicationRecord
       self.table_name = 'dla20s'
       belongs_to :episodes, class_name: 'ProviderGateway::Api::Episode'
+
+      validates_presence_of :episode_key, :client_key, :dla_average_score
     end
   end
 end

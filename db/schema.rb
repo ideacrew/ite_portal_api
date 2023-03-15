@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_309_164_749) do
+ActiveRecord::Schema[7.0].define(version: 20_230_314_163_437) do
   create_table 'addresses', force: :cascade do |t|
     t.string 'address_line1'
     t.string 'address_line2'
@@ -145,6 +145,114 @@ ActiveRecord::Schema[7.0].define(version: 20_230_309_164_749) do
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['client_id'], name: 'index_episodes_on_client_id'
+  end
+
+  create_table 'master_claims', force: :cascade do |t|
+    t.bigint 'master_claim_id'
+    t.string 'claim_record_id'
+    t.date 'adjudication_date'
+    t.string 'adjudication_status'
+    t.string 'admitting_diagnosis'
+    t.string 'admitting_diagnosis_code'
+    t.integer 'age_as_of_first_date_of_service'
+    t.decimal 'billed_amount', precision: 18
+    t.date 'billing_date'
+    t.bigint 'billing_medicaid_id'
+    t.bigint 'billing_patient_account'
+    t.string 'billing_provider'
+    t.bigint 'billing_provider_id'
+    t.string 'billing_provider_npi'
+    t.string 'billing_provider_taxonomy'
+    t.string 'billing_provider_type'
+    t.string 'billing_provider_type_code'
+    t.string 'claim_coverage_type'
+    t.string 'claim_information_source'
+    t.string 'claim_process_level'
+    t.string 'claim_processing_status'
+    t.bigint 'claim_tcn'
+    t.string 'claim_type'
+    t.date 'date_of_birth'
+    t.string 'drug_category'
+    t.string 'drug_code'
+    t.string 'drug_generic_name'
+    t.string 'drug_name'
+    t.string 'eligibility_program_code'
+    t.string 'emergency_diagnosis'
+    t.string 'emergency_diagnosis_code'
+    t.date 'first_date_of_service'
+    t.string 'first_name'
+    t.text 'full_address'
+    t.string 'full_name'
+    t.string 'gender'
+    t.bigint 'header_diagnosis_group_key'
+    t.date 'last_date_of_service'
+    t.string 'last_name'
+    t.decimal 'mco_encounter_paid_amount', precision: 18
+    t.string 'middle_name'
+    t.string 'modifiers'
+    t.string 'original_tcn_of_adjusted_claim'
+    t.string 'other_diagnosis'
+    t.decimal 'paid_amount', precision: 18
+    t.integer 'paid_units'
+    t.string 'phone_number'
+    t.string 'place_of_service'
+    t.integer 'place_of_service_code'
+    t.bigint 'pre_authorization_number'
+    t.string 'primary_diagnosis'
+    t.string 'primary_diagnosis_code'
+    t.string 'procedure'
+    t.string 'procedure_code'
+    t.string 'race'
+    t.bigint 'remittance_number'
+    t.string 'revenue_code'
+    t.string 'revenue_code_description'
+    t.integer 'submitted_units'
+    t.integer 'tcn_line_item_number'
+    t.integer 'ward_code'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['claim_record_id'], name: 'index_claim_record_id'
+    t.index ['master_claim_id'], name: 'index_master_claim_id'
+  end
+
+  create_table 'master_client_registries', force: :cascade do |t|
+    t.bigint 'master_client_registry_id'
+    t.string 'master_client_id'
+    t.bigint 'billing_medicaid_id'
+    t.bigint 'billing_patient_account'
+    t.bigint 'billing_provider_id'
+    t.date 'date_of_birth'
+    t.string 'first_name'
+    t.text 'full_address'
+    t.string 'full_name'
+    t.string 'gender'
+    t.string 'last_name'
+    t.string 'middle_name'
+    t.string 'phone_number'
+    t.string 'race'
+    t.string 'record_source', default: 'master_claims'
+    t.string 'record_source_id'
+    t.date 'record_source_date'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['master_client_id'], name: 'index_master_client_id'
+    t.index ['master_client_registry_id'], name: 'index_master_client_registry_id'
+  end
+
+  create_table 'master_clients', force: :cascade do |t|
+    t.string 'master_client_id'
+    t.date 'date_of_birth'
+    t.string 'first_name'
+    t.string 'full_name'
+    t.string 'gender'
+    t.string 'last_name'
+    t.string 'middle_name'
+    t.string 'record_source', default: 'master_claims'
+    t.string 'record_source_id'
+    t.date 'record_source_date'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['master_client_id'], name: 'index_master_client_id'
   end
 
   create_table 'phones', force: :cascade do |t|

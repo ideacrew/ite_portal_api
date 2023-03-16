@@ -148,30 +148,30 @@ ActiveRecord::Schema[7.0].define(version: 20_230_314_163_437) do
   end
 
   create_table 'master_claims', force: :cascade do |t|
-    t.bigint 'master_claim_id'
-    t.string 'claim_record_id'
-    t.date 'adjudication_date'
+    t.bigint 'master_claim_id', null: false
+    t.string 'claim_record_id', null: false
+    t.date 'adjudication_date', null: false
     t.string 'adjudication_status'
     t.string 'admitting_diagnosis'
     t.string 'admitting_diagnosis_code'
     t.integer 'age_as_of_first_date_of_service'
     t.decimal 'billed_amount', precision: 18
-    t.date 'billing_date'
+    t.date 'billing_date', null: false
     t.bigint 'billing_medicaid_id'
     t.bigint 'billing_patient_account'
     t.string 'billing_provider'
-    t.bigint 'billing_provider_id'
+    t.bigint 'billing_provider_id', null: false
     t.string 'billing_provider_npi'
     t.string 'billing_provider_taxonomy'
     t.string 'billing_provider_type'
-    t.string 'billing_provider_type_code'
-    t.string 'claim_coverage_type'
+    t.string 'billing_provider_type_code', null: false
+    t.string 'claim_coverage_type', null: false
     t.string 'claim_information_source'
     t.string 'claim_process_level'
     t.string 'claim_processing_status'
     t.bigint 'claim_tcn'
     t.string 'claim_type'
-    t.date 'date_of_birth'
+    t.date 'date_of_birth', null: false
     t.string 'drug_category'
     t.string 'drug_code'
     t.string 'drug_generic_name'
@@ -179,11 +179,11 @@ ActiveRecord::Schema[7.0].define(version: 20_230_314_163_437) do
     t.string 'eligibility_program_code'
     t.string 'emergency_diagnosis'
     t.string 'emergency_diagnosis_code'
-    t.date 'first_date_of_service'
+    t.date 'first_date_of_service', null: false
     t.string 'first_name'
-    t.text 'full_address'
+    t.text 'full_address', null: false
     t.string 'full_name'
-    t.string 'gender'
+    t.string 'gender', null: false
     t.bigint 'header_diagnosis_group_key'
     t.date 'last_date_of_service'
     t.string 'last_name'
@@ -201,7 +201,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_314_163_437) do
     t.string 'primary_diagnosis'
     t.string 'primary_diagnosis_code'
     t.string 'procedure'
-    t.string 'procedure_code'
+    t.string 'procedure_code', null: false
     t.string 'race'
     t.bigint 'remittance_number'
     t.string 'revenue_code'
@@ -216,23 +216,23 @@ ActiveRecord::Schema[7.0].define(version: 20_230_314_163_437) do
   end
 
   create_table 'master_client_registries', force: :cascade do |t|
-    t.bigint 'master_client_registry_id'
-    t.string 'master_client_id'
+    t.bigint 'master_client_registry_id', null: false
+    t.string 'master_client_id', null: false
     t.bigint 'billing_medicaid_id'
     t.bigint 'billing_patient_account'
     t.bigint 'billing_provider_id'
-    t.date 'date_of_birth'
+    t.date 'date_of_birth', null: false
     t.string 'first_name'
     t.text 'full_address'
-    t.string 'full_name'
-    t.string 'gender'
+    t.string 'full_name', null: false
+    t.string 'gender', null: false
     t.string 'last_name'
     t.string 'middle_name'
     t.string 'phone_number'
     t.string 'race'
-    t.string 'record_source', default: 'master_claims'
-    t.string 'record_source_id'
-    t.date 'record_source_date'
+    t.string 'record_source', default: 'master_claims', null: false
+    t.string 'record_source_id', null: false
+    t.date 'record_source_date', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['master_client_id'], name: 'index_master_client_id'
@@ -240,16 +240,16 @@ ActiveRecord::Schema[7.0].define(version: 20_230_314_163_437) do
   end
 
   create_table 'master_clients', force: :cascade do |t|
-    t.string 'master_client_id'
-    t.date 'date_of_birth'
+    t.string 'master_client_id', null: false
+    t.date 'date_of_birth', null: false
     t.string 'first_name'
-    t.string 'full_name'
-    t.string 'gender'
+    t.string 'full_name', null: false
+    t.string 'gender', null: false
     t.string 'last_name'
     t.string 'middle_name'
-    t.string 'record_source', default: 'master_claims'
-    t.string 'record_source_id'
-    t.date 'record_source_date'
+    t.string 'record_source', default: 'master_claims', null: false
+    t.string 'record_source_id', null: false
+    t.date 'record_source_date', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['master_client_id'], name: 'index_master_client_id'

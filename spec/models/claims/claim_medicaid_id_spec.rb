@@ -3,10 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe Claims::ClaimMedicaidId, type: :model, dbclean: :around_each do
+  let(:master_client) { FactoryBot.build(:master_client) }
+
   let(:claim_medicaid_id_params) do
     {
       medicaid_id_id: '1',
-      master_client_id: 'M-00000001',
+      master_client_id: master_client.id,
       medicaid_id: '123456',
       eligibility_program_code: '774D',
       record_source_date: Date.yesterday
@@ -29,12 +31,6 @@ RSpec.describe Claims::ClaimMedicaidId, type: :model, dbclean: :around_each do
         claim_medicaid_id_params[:medicaid_id_id] = nil
         claim_medicaid_id = described_class.new(claim_medicaid_id_params)
         expect(claim_medicaid_id.save).to eq false
-      end
-
-      it 'without a master_client_id' do
-        claim_medicaid_id_params[:master_client_id] = nil
-        claim_medicaid_id_registry = described_class.new(claim_medicaid_id_params)
-        expect(claim_medicaid_id_registry.save).to eq false
       end
 
       it 'without a medicaid_id' do

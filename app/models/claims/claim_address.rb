@@ -4,10 +4,10 @@ module Claims
   # claim_addresses object
   class ClaimAddress < ApplicationRecord
     self.table_name = 'claim_addresses'
+    belongs_to :master_clients, class_name: 'Claims::MasterClient'
 
     validates_presence_of(
       :address_id,
-      :master_client_id,
       :full_address,
       :record_source_date
     )

@@ -4,6 +4,9 @@ module Claims
   # master_client object
   class MasterClient < ApplicationRecord
     self.table_name = 'master_clients'
+    has_many :claim_addresses, class_name: 'Claims::ClaimAddress'
+    has_many :claim_medicaid_ids, class_name: 'Claims::ClaimMedicaidId'
+    has_many :claim_phone_numbers, class_name: 'Claims::ClaimPhoneNumber'
 
     validates_presence_of(
       :master_client_id,

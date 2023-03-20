@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_317_153_601) do
+ActiveRecord::Schema[7.0].define(version: 20_230_320_194_656) do
   create_table 'addresses', force: :cascade do |t|
     t.string 'address_line1'
     t.string 'address_line2'
@@ -211,7 +211,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_317_153_601) do
     t.string 'claim_information_source'
     t.string 'claim_process_level'
     t.string 'claim_processing_status'
-    t.bigint 'claim_tcn'
+    t.string 'claim_tcn', limit: 17
     t.string 'claim_type'
     t.date 'date_of_birth', null: false
     t.string 'drug_category'
@@ -231,9 +231,9 @@ ActiveRecord::Schema[7.0].define(version: 20_230_317_153_601) do
     t.string 'last_name'
     t.decimal 'mco_encounter_paid_amount', precision: 18
     t.string 'middle_name'
-    t.string 'modifiers'
-    t.string 'original_tcn_of_adjusted_claim'
-    t.string 'other_diagnosis'
+    t.string 'modifier'
+    t.string 'original_tcn_of_adjusted_claim', limit: 17
+    t.string 'other_diagnosis_code'
     t.decimal 'paid_amount', precision: 18
     t.integer 'paid_units'
     t.string 'phone_number'

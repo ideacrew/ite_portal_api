@@ -96,7 +96,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_317_153_601) do
   end
 
   create_table 'denial_reasons', force: :cascade do |t|
-    t.bigint 'denial_reason_code', null: false
+    t.string 'denial_reason_code', null: false
     t.string 'denial_reason_description', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
@@ -278,10 +278,10 @@ ActiveRecord::Schema[7.0].define(version: 20_230_317_153_601) do
   end
 
   create_table 'place_of_services', force: :cascade do |t|
-    t.string 'place_of_service_code', null: false
+    t.integer 'place_of_service_code', null: false
     t.string 'place_of_service_name', null: false
-    t.string 'place_of_service_description', null: false
-    t.string 'special_considerations'
+    t.text 'place_of_service_description', null: false
+    t.text 'special_considerations'
     t.date 'effective_date'
     t.boolean 'effective_prior_to_2003'
     t.datetime 'created_at', null: false

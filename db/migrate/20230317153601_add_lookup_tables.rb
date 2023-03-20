@@ -2,7 +2,7 @@ class AddLookupTables < ActiveRecord::Migration[7.0]
   def change
 
     create_table 'denial_reasons' do |t|
-      t.bigint 'denial_reason_code', null: false
+      t.string 'denial_reason_code', null: false
       t.string 'denial_reason_description', null: false
       t.index ['denial_reason_code'], name: 'index_denial_reason_code'
       t.timestamps
@@ -31,10 +31,10 @@ class AddLookupTables < ActiveRecord::Migration[7.0]
     end
 
     create_table 'place_of_services' do |t|
-      t.string 'place_of_service_code', null: false
+      t.integer 'place_of_service_code', null: false
       t.string 'place_of_service_name', null: false
-      t.string 'place_of_service_description', null: false
-      t.string 'special_considerations'
+      t.text 'place_of_service_description', null: false
+      t.text 'special_considerations'
       t.date 'effective_date'
       t.boolean 'effective_prior_to_2003'
       t.index ['place_of_service_code'], name: 'index_place_of_service_code'

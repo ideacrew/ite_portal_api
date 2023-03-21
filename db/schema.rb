@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_315_200_704) do
+ActiveRecord::Schema[7.0].define(version: 20_230_317_153_601) do
   create_table 'addresses', force: :cascade do |t|
     t.string 'address_line1'
     t.string 'address_line2'
@@ -127,6 +127,14 @@ ActiveRecord::Schema[7.0].define(version: 20_230_315_200_704) do
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['episode_id'], name: 'index_clinical_profiles_on_episode_id'
+  end
+
+  create_table 'denial_reasons', force: :cascade do |t|
+    t.string 'denial_reason_code', null: false
+    t.string 'denial_reason_description', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['denial_reason_code'], name: 'index_denial_reason_code'
   end
 
   create_table 'diagnoses', force: :cascade do |t|
@@ -301,6 +309,43 @@ ActiveRecord::Schema[7.0].define(version: 20_230_315_200_704) do
     t.date 'effective_start_date'
     t.bigint 'clients_id'
     t.index ['clients_id'], name: 'index_phones_on_clients_id'
+  end
+
+  create_table 'place_of_services', force: :cascade do |t|
+    t.integer 'place_of_service_code', null: false
+    t.string 'place_of_service_name', null: false
+    t.text 'place_of_service_description', null: false
+    t.text 'special_considerations'
+    t.date 'effective_date'
+    t.boolean 'effective_prior_to_2003'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['place_of_service_code'], name: 'index_place_of_service_code'
+  end
+
+  create_table 'procedure_modifiers', force: :cascade do |t|
+    t.string 'modifier_code', null: false
+    t.string 'modifier_description', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['modifier_code'], name: 'index_modifier_code'
+  end
+
+  create_table 'procedures', force: :cascade do |t|
+    t.string 'procedure_code', null: false
+    t.string 'procedure_description', null: false
+    t.string 'payment_unit'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['procedure_code'], name: 'index_procedure_code'
+  end
+
+  create_table 'provider_type', force: :cascade do |t|
+    t.string 'provider_type_code', null: false
+    t.string 'provider_type_description', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['provider_type_code'], name: 'index_provider_type_code'
   end
 
   create_table 'substance_uses', force: :cascade do |t|

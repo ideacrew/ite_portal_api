@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_314_163_437) do
+ActiveRecord::Schema[7.0].define(version: 20_230_315_200_704) do
   create_table 'addresses', force: :cascade do |t|
     t.string 'address_line1'
     t.string 'address_line2'
@@ -35,6 +35,40 @@ ActiveRecord::Schema[7.0].define(version: 20_230_314_163_437) do
     t.date 'cafas_or_pecfas_assessment_date'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+  end
+
+  create_table 'claim_addresses', force: :cascade do |t|
+    t.string 'address_id', null: false
+    t.string 'full_address', null: false
+    t.date 'record_source_date', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.bigint 'master_client_id', null: false
+    t.index ['address_id'], name: 'index_address_id'
+    t.index ['master_client_id'], name: 'index_claim_addresses_on_master_client_id'
+  end
+
+  create_table 'claim_medicaid_ids', force: :cascade do |t|
+    t.string 'medicaid_id_id', null: false
+    t.string 'medicaid_id', null: false
+    t.string 'eligibility_program_code', null: false
+    t.date 'record_source_date', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.bigint 'master_client_id', null: false
+    t.index ['master_client_id'], name: 'index_claim_medicaid_ids_on_master_client_id'
+    t.index ['medicaid_id_id'], name: 'index_medicaid_id_id'
+  end
+
+  create_table 'claim_phone_numbers', force: :cascade do |t|
+    t.string 'phone_number_id', null: false
+    t.string 'phone_number', null: false
+    t.date 'record_source_date', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.bigint 'master_client_id', null: false
+    t.index ['master_client_id'], name: 'index_claim_phone_numbers_on_master_client_id'
+    t.index ['phone_number_id'], name: 'index_phone_number_id'
   end
 
   create_table 'client_profiles', force: :cascade do |t|
@@ -290,5 +324,8 @@ ActiveRecord::Schema[7.0].define(version: 20_230_314_163_437) do
   end
 
   add_foreign_key 'addresses', 'clients', column: 'clients_id'
+  add_foreign_key 'claim_addresses', 'master_clients'
+  add_foreign_key 'claim_medicaid_ids', 'master_clients'
+  add_foreign_key 'claim_phone_numbers', 'master_clients'
   add_foreign_key 'phones', 'clients', column: 'clients_id'
 end

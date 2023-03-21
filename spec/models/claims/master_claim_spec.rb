@@ -39,7 +39,7 @@ RSpec.describe Claims::MasterClaim, type: :model, dbclean: :around_each do
       emergency_diagnosis: '',
       first_date_of_service: '2021-12-29',
       first_name: 'Daniel',
-      full_address: '"717 Villarreal Neck Port Holly, LA 18973"',
+      full_address: '717 Villarreal Neck Port Holly, LA 18973',
       full_name: 'Daniel L Crawford',
       gender: 'F',
       header_diagnosis_group_key: '5099905',

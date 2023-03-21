@@ -253,7 +253,9 @@ ActiveRecord::Schema[7.0].define(version: 20_230_320_194_656) do
     t.integer 'ward_code'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.index ['billing_medicaid_id'], name: 'index_master_claims_on_billing_medicaid_id'
     t.index ['claim_record_id'], name: 'index_claim_record_id'
+    t.index ['claim_tcn'], name: 'index_master_claims_on_claim_tcn'
     t.index ['master_claim_id'], name: 'index_master_claim_id'
   end
 
@@ -294,6 +296,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_320_194_656) do
     t.date 'record_source_date', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.index ['full_name'], name: 'index_master_clients_on_full_name'
     t.index ['master_client_id'], name: 'index_master_client_id'
   end
 

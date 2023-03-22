@@ -38,6 +38,10 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+  config.after(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
   # If you enable ActiveRecord support you should unncomment these lines,
   # note if you'd prefer not to run each example within a transaction, you
   # should set use_transactional_fixtures to false.

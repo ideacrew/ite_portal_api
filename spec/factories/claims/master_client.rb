@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :master_client, class: '::Claims::MasterClient' do
     sequence(:id) { |number| number }
-    sequence(:master_client_id) { |number| "M-00000#{number.to_s}" }
+    sequence(:master_client_id) { |number| "M-00000#{number}" }
     full_name { 'Daniel L Crawford' }
     first_name { 'Daniel' }
     middle_name { 'L' }

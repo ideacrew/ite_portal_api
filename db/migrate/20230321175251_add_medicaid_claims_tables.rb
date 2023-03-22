@@ -127,8 +127,30 @@ class AddMedicaidClaimsTables < ActiveRecord::Migration[7.0]
       t.index ['mhgps_id'], name: 'index_mhgps_id'
     end
 
-
-
+    create_table 'medicaid_providers' do |t|
+      t.string 'dhcf_system_provider_id', null: false
+      t.date 'information_date', null: false
+      t.string 'legacy_provider_id'
+      t.boolean 'organization_indicator'
+      t.string 'pharmacy_classification_code'
+      t.string 'provider_application_status'
+      t.string 'provider_billing_code'
+      t.string 'provider_dea'
+      t.string 'provider_facility_type_code'
+      t.string 'provider_first_name'
+      t.string 'provider_full_name'
+      t.string 'provider_id'
+      t.string 'provider_last_name'
+      t.string 'provider_location_code'
+      t.boolean 'provider_mc_indicator'
+      t.string 'provider_middle_name'
+      t.string 'provider_npi'
+      t.string 'provider_suffix'
+      t.string 'provider_type'
+      t.integer 'provider_type_code'
+      t.timestamps
+      t.index ['dhcf_system_provider_id'], name: 'index_dhcf_system_provider_id'
+    end
 
   end
 end

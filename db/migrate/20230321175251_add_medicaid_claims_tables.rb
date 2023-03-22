@@ -106,15 +106,18 @@ class AddMedicaidClaimsTables < ActiveRecord::Migration[7.0]
     end
 
     create_table 'denied_claims_with_reasons' do |t|
+      t.string 'claim_id'
       t.string 'claim_tcn', limit: 17, null: false
       t.string 'denial_reason_code', null: false
       t.string 'denial_reason', null: false
+      t.string 'tcn_line_item_number'
       t.timestamps
       t.index ['claim_tcn'], name: 'index_claim_tcn'
     end
 
     create_table 'mhgps_enrollments' do |t|
       t.string 'mhgps_id', null: false
+      t.string 'medicaid_id'
       t.string 'full_name', null: false
       t.string 'first_name', null: false
       t.string 'last_name', null: false

@@ -138,9 +138,11 @@ ActiveRecord::Schema[7.0].define(version: 20_230_321_175_251) do
   end
 
   create_table 'denied_claims_with_reasons', force: :cascade do |t|
+    t.string 'claim_id'
     t.string 'claim_tcn', limit: 17, null: false
     t.string 'denial_reason_code', null: false
     t.string 'denial_reason', null: false
+    t.string 'tcn_line_item_number'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['claim_tcn'], name: 'index_claim_tcn'

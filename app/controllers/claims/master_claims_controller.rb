@@ -7,7 +7,7 @@ module Claims
 
     def index
       if params['search']
-        @claims = Claims::MasterClaim.where('claim_tcn LIKE ? OR billing_medicaid_id LIKE ?', "%#{params['search']}%").all
+        @claims = Claims::MasterClaim.where('claim_tcn LIKE ? OR billing_medicaid_id LIKE ?', "%#{params['search']}%", "%#{params['search']}%").all
         render json: { claim_count: @claims.length, claims: @claims&.map(&:attributes) }
       else
         render json: { status_text: 'No search param given', status: 400, content_type: 'application/json' }, status: 400

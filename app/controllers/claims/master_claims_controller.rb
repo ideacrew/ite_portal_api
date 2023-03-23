@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 module Claims
-  # controller actions for the master clients model
-  class MasterClientsController < ApplicationController
+  # controller actions for the master claims model
+  class MasterClaimsController < ApplicationController
     before_action :permit_params
 
     def index
       if params['search']
-        @clients = Claims::MasterClient.where('full_name LIKE ?', "%#{params['search']}%").all
-        render json: { client_count: @clients.length, clients: @clients&.map(&:attributes) }
+        @claims = Claims::MasterClaim.where('claim_tcn LIKE ? OR billing_medicaid_id LIKE ?', "%#{params['search']}%").all
+        render json: { claim_count: @claims.length, claims: @claims&.map(&:attributes) }
       else
         render json: { status_text: 'No search param given', status: 400, content_type: 'application/json' }, status: 400
       end

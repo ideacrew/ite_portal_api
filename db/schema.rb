@@ -371,10 +371,6 @@ ActiveRecord::Schema[7.0].define(version: 20_230_320_194_656) do
     t.datetime 'updated_at', null: false
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'email'
-  end
-
   add_foreign_key 'addresses', 'clients', column: 'clients_id'
   add_foreign_key 'claim_addresses', 'master_clients'
   add_foreign_key 'claim_medicaid_ids', 'master_clients'

@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Claims::ClaimMedicaidId, type: :model, dbclean: :around_each do
-  let(:master_client) { FactoryBot.build(:master_client) }
+  let(:master_client) { FactoryBot.create(:master_client) }
 
   let(:claim_medicaid_id_params) do
     {

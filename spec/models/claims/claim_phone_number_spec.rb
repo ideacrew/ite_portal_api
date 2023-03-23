@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Claims::ClaimPhoneNumber, type: :model, dbclean: :around_each do
-  let(:master_client) { FactoryBot.build(:master_client) }
+  let(:master_client) { FactoryBot.create(:master_client) }
 
   let(:claim_phone_number_params) do
     {

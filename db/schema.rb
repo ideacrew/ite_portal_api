@@ -347,6 +347,39 @@ ActiveRecord::Schema[7.0].define(version: 20_230_328_150_712) do
     t.index ['race_code'], name: 'index_race_code'
   end
 
+  create_table 'list_collateral_statuses', force: :cascade do |t|
+    t.string 'collateral_status_code', null: false
+    t.string 'collateral_status'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['collateral_status_code'], name: 'index_collateral_status_code'
+  end
+
+  create_table 'list_genders', force: :cascade do |t|
+    t.string 'gender_code', null: false
+    t.string 'gender'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['gender_code'], name: 'index_gender_code'
+  end
+
+  create_table 'list_record_types', force: :cascade do |t|
+    t.string 'record_type_code', null: false
+    t.string 'record_type'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['record_type_code'], name: 'index_record_type_code'
+  end
+
+  create_table 'list_treatment_settings', force: :cascade do |t|
+    t.string 'treatment_setting_code', null: false
+    t.string 'treatment_setting'
+    t.string 'asam_level'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['treatment_setting_code'], name: 'index_treatment_setting_code'
+  end
+
   create_table 'master_claims', force: :cascade do |t|
     t.bigint 'master_claim_id', null: false
     t.string 'claim_record_id', null: false

@@ -267,14 +267,6 @@ ActiveRecord::Schema[7.0].define(version: 20_230_328_150_712) do
     t.index ['co_occurring_sud_mh_code'], name: 'index_co_occurring_sud_mh_code'
   end
 
-  create_table 'list_employments', force: :cascade do |t|
-    t.string 'employment_code', null: false
-    t.string 'employment'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['employment_code'], name: 'index_employment_code'
-  end
-
   create_table 'list_languages', force: :cascade do |t|
     t.string 'primary_language_code', null: false
     t.string 'primary_language'
@@ -305,6 +297,54 @@ ActiveRecord::Schema[7.0].define(version: 20_230_328_150_712) do
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['smi_sed_code'], name: 'index_smi_sed_code'
+  end
+
+  create_table 'list_discharge_reasons', force: :cascade do |t|
+    t.string 'discharge_reason_code', null: false
+    t.string 'discharge_reason'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['discharge_reason_code'], name: 'index_discharge_reason_code'
+  end
+
+  create_table 'list_educations', force: :cascade do |t|
+    t.string 'education_code', null: false
+    t.string 'education'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['education_code'], name: 'index_education_code'
+  end
+
+  create_table 'list_employments', force: :cascade do |t|
+    t.string 'employment_code', null: false
+    t.string 'employment'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['employment_code'], name: 'index_employment_code'
+  end
+
+  create_table 'list_ethnicities', force: :cascade do |t|
+    t.string 'ethnicity_code', null: false
+    t.string 'ethnicity'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['ethnicity_code'], name: 'index_ethnicity_code'
+  end
+
+  create_table 'list_living_arrangements', force: :cascade do |t|
+    t.string 'living_arrangements_code', null: false
+    t.string 'living_arrangements'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['living_arrangements_code'], name: 'index_living_arrangements_code'
+  end
+
+  create_table 'list_races', force: :cascade do |t|
+    t.string 'race_code', null: false
+    t.string 'race'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['race_code'], name: 'index_race_code'
   end
 
   create_table 'master_claims', force: :cascade do |t|

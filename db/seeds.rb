@@ -326,4 +326,113 @@ Claims::PlaceOfService.create([
   { place_of_service_code: '99', place_of_service_name: 'Other Place of Service', place_of_service_description: 'Other place of service not identified above.', effective_prior_to_2003: 'true' }
 ])
 
+ListLookups::ListRace.create([
+  { race_code: '1', race: 'Alaskan Native (Aleut, Eskimo)' },
+  { race_code: '2', race: 'American Indian/Alaska native ' },
+  { race_code: '3', race: 'Asian or Pacific Islander' },
+  { race_code: '4', race: 'Black or African American' },
+  { race_code: '5', race: 'White' },
+  { race_code: '13', race: 'Asian' },
+  { race_code: '20', race: 'Other Single Race' },
+  { race_code: '21', race: 'Two or More Races' },
+  { race_code: '23', race: 'Native Hawaiian or other Pacific islander' },
+  { race_code: '97', race: 'Unknown' },
+  { race_code: '98', race: 'Not Collected' }
+])
+
+ListLookups::ListEthnicity.create([
+  { ethnicity_code: '1', ethnicity: 'Puerto Rican' },
+  { ethnicity_code: '2', ethnicity: 'Mexican' },
+  { ethnicity_code: '3', ethnicity: 'Cuban' },
+  { ethnicity_code: '4', ethnicity: 'Other specific Hispanic or Latino' },
+  { ethnicity_code: '5', ethnicity: 'Not of Hispanic or Latino origin' },
+  { ethnicity_code: '6', ethnicity: 'Hispanic or Latino, Not Specified' },
+  { ethnicity_code: '97', ethnicity: 'Unknown' },
+  { ethnicity_code: '98', ethnicity: 'Not Collected' },
+  { ethnicity_code: '23', ethnicity: 'Native Hawaiian or Other Pacific Islander' },
+  { ethnicity_code: '97', ethnicity: 'Unknown' },
+  { ethnicity_code: '98', ethnicity: 'Not Collected' }
+])
+
+ListLookups::ListLivingArrangement.create([
+  { living_arrangements_code: '1', living_arrangements: 'Homeless' },
+  { living_arrangements_code: '2', living_arrangements: 'Dependent Living, Not Specified' },
+  { living_arrangements_code: '3', living_arrangements: 'Independent Living - Adult' },
+  { living_arrangements_code: '4', living_arrangements: 'Institutional Setting' },
+  { living_arrangements_code: '5', living_arrangements: 'Justice System' },
+  { living_arrangements_code: '6', living_arrangements: 'Dependent Living: Residential Care' },
+  { living_arrangements_code: '7', living_arrangements: 'Dependent Living: Foster Home/Foster Care' },
+  { living_arrangements_code: '8', living_arrangements: 'Dependent Living: Crisis Residence' },
+  { living_arrangements_code: '9', living_arrangements: 'Dependent Living: Institutional Setting' },
+  { living_arrangements_code: '10', living_arrangements: 'Dependent Living: Private Residence' },
+  { living_arrangements_code: '11', living_arrangements: 'Dependent Living with Caretaker' },
+  { living_arrangements_code: '12', living_arrangements: 'Foster Care in Family Setting' },
+  { living_arrangements_code: '13', living_arrangements: 'Foster Care Group Home' },
+  { living_arrangements_code: '97', living_arrangements: 'Unknown' },
+  { living_arrangements_code: '98', living_arrangements: 'Not Collected' }
+])
+
+ListLookups::ListDischargeReason.create([
+  { discharge_reason_code: '1', discharge_reason: 'Treatment Completed' },
+  { discharge_reason_code: '2', discharge_reason: 'Dropout, Reason Not Specified' },
+  { discharge_reason_code: '3', discharge_reason: 'Terminated by Facility' },
+  { discharge_reason_code: '4', discharge_reason: 'Transferred Successfully' },
+  { discharge_reason_code: '5', discharge_reason: 'Incarcerated' },
+  { discharge_reason_code: '6', discharge_reason: 'Death by Suicide' },
+  { discharge_reason_code: '7', discharge_reason: 'Death Not by Suicide' },
+  { discharge_reason_code: '8', discharge_reason: 'Dropout - AMA' },
+  { discharge_reason_code: '9', discharge_reason: 'Dropout - Lost to Contact' },
+  { discharge_reason_code: '10', discharge_reason: 'Administrative Closure' },
+  { discharge_reason_code: '11', discharge_reason: 'Medical Necessity' },
+  { discharge_reason_code: '12', discharge_reason: 'Dropout - AWOL or Elopement' },
+  { discharge_reason_code: '13', discharge_reason: 'Aging Out' },
+  { discharge_reason_code: '14', discharge_reason: 'Change of Residence' },
+  { discharge_reason_code: '15', discharge_reason: 'Transferred but No Show' },
+  { discharge_reason_code: '16', discharge_reason: 'Transferred but Not Reportable' },
+  { discharge_reason_code: '17', discharge_reason: 'Incarcerated' },
+  { discharge_reason_code: '18', discharge_reason: 'Discharged from Psychiatric Inpatient Facility' },
+  { discharge_reason_code: '19', discharge_reason: 'Conditional Release' },
+  { discharge_reason_code: '95', discharge_reason: 'Other' },
+  { discharge_reason_code: '97', discharge_reason: 'Unknown' },
+  { discharge_reason_code: '98', discharge_reason: 'Not Collected' }
+])
+
+ListLookups::ListEducation.create([
+  { education_code: '0', education: 'Less than one school grade' },
+  { education_code: '1', education: 'Grade 1' },
+  { education_code: '2', education: 'Grade 2' },
+  { education_code: '3', education: 'Grade 3' },
+  { education_code: '4', education: 'Grade 4' },
+  { education_code: '5', education: 'Grade 5' },
+  { education_code: '6', education: 'Grade 6' },
+  { education_code: '7', education: 'Grade 7' },
+  { education_code: '8', education: 'Grade 8' },
+  { education_code: '9', education: 'Grade 9' },
+  { education_code: '10', education: 'Grade 10' },
+  { education_code: '11', education: 'Grade 11' },
+  { education_code: '12', education: '12th Grade or GED' },
+  { education_code: '13', education: '1st Year of college/university' },
+  { education_code: '14', education: '2nd Year of college/university' },
+  { education_code: '15', education: '3rd Year of college/university' },
+  { education_code: '16', education: '4th Year of college/university' },
+  { education_code: '17', education: 'Some post-graduate study' },
+  { education_code: '18', education: 'Graduate or professional degree' },
+  { education_code: '71', education: 'Vocational school' },
+  { education_code: '72', education: 'Nursery, pre-school or head-start' },
+  { education_code: '73', education: 'Kindergarten' },
+  { education_code: '74', education: 'Self-contained special education' },
+  { education_code: '97', education: 'Unknown' },
+  { education_code: '98', education: 'Not Collected' }
+])
+
+ListLookups::ListEmployment.create([
+  { employment_code: '1', employment: 'Full-time' },
+  { employment_code: '2', employment: 'Part-time' },
+  { employment_code: '3', employment: 'Unemployed' },
+  { employment_code: '4', employment: 'Not in labor force' },
+  { employment_code: '5', employment: 'Employed' },
+  { employment_code: '97', employment: 'Unknown' },
+  { employment_code: '98', employment: 'Not Collected' }
+])
+
 # rubocop:enable Layout/FirstArrayElementIndentation, Layout/LineLength, Naming/VariableNumber

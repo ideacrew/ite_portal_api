@@ -9,6 +9,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # rubocop:disable Layout/FirstArrayElementIndentation, Layout/LineLength, Naming/VariableNumber
 
+# Claims Lookups
 Claims::DenialReason.create([
   { denial_reason_code: '0077', denial_reason_description: 'SERV DATE SPAN MORE ONE DOS' },
   { denial_reason_code: '0101', denial_reason_description: 'EXACT DUPLICATE CLAIM' },
@@ -324,6 +325,49 @@ Claims::PlaceOfService.create([
   { place_of_service_code: '72', place_of_service_name: 'Rural Health Clinic', place_of_service_description: 'A certified facility which is located in a rural medically underserved area that provides ambulatory primary medical care under the general direction of a physician.', effective_prior_to_2003: 'true' },
   { place_of_service_code: '81', place_of_service_name: 'Independent Laboratory', place_of_service_description: "A laboratory certified to perform diagnostic and/or clinical tests independent of an institution or a physician's office.", effective_prior_to_2003: 'true' },
   { place_of_service_code: '99', place_of_service_name: 'Other Place of Service', place_of_service_description: 'Other place of service not identified above.', effective_prior_to_2003: 'true' }
+])
+
+# Generic Lookups
+ListLookups::ListRecordType.create([
+  { record_type_code: 'A', record_type: 'SUD Initial Admission' },
+  { record_type_code: 'T', record_type: 'SUD Transfer' },
+  { record_type_code: 'M', record_type: 'MH Initial Admission' },
+  { record_type_code: 'x', record_type: 'MH Transfer' }
+])
+
+ListLookups::ListTreatmentSetting.create([
+  { treatment_setting_code: '1', treatment_setting: 'Detoxification, 24-hour service, hospital inpatient', asam_level: '4-D and 3.7-D' },
+  { treatment_setting_code: '2', treatment_setting: 'Detoxification, 24-hour service, free-standing residential', asam_level: '3.2 D' },
+  { treatment_setting_code: '3', treatment_setting: 'Rehabilitation/residential - hospital (other than detoxification)', asam_level: '4 and 3.7' },
+  { treatment_setting_code: '4', treatment_setting: 'Rehabilitation/residential - short term (30 days or fewer)', asam_level: '3.5' },
+  { treatment_setting_code: '5', treatment_setting: 'Rehabilitation/residential - long term (more than 30 days)', asam_level: '3.3 and 3.1' },
+  { treatment_setting_code: '6', treatment_setting: 'Ambulatory - intensive outpatient', asam_level: '2.5' },
+  { treatment_setting_code: '7', treatment_setting: 'Ambulatory - non-intensive outpatient', asam_level: '1' },
+  { treatment_setting_code: '8', treatment_setting: 'Ambulatory - detoxification', asam_level: '1-D and 2-D' },
+  { treatment_setting_code: '72', treatment_setting: 'State psychiatric hospital' },
+  { treatment_setting_code: '73', treatment_setting: 'SMHA funded/operated community-based program' },
+  { treatment_setting_code: '74', treatment_setting: 'Residential treatment center' },
+  { treatment_setting_code: '75', treatment_setting: 'Other psychiatric inpatient' },
+  { treatment_setting_code: '76', treatment_setting: 'Institutions under the justice system' },
+  { treatment_setting_code: '77', treatment_setting: 'MH Assessment/Screening' },
+  { treatment_setting_code: '96', treatment_setting: 'Not applicable ' }
+])
+
+ListLookups::ListCollateralStatus.create([
+  { collateral_status_code: '1', collateral_status: 'Codependent/Collateral' },
+  { collateral_status_code: '1', collateral_status: 'Client' }
+])
+
+ListLookups::ListGender.create([
+  { gender_code: '1', gender: 'Male' },
+  { gender_code: '2', gender: 'Female' },
+  { gender_code: '3', gender: 'Female-to-Male' },
+  { gender_code: '4', gender: 'Male-to-Female' },
+  { gender_code: '5', gender: 'Transgender, Not Specified' },
+  { gender_code: '6', gender: 'Non-conforming Gender' },
+  { gender_code: '95', gender: 'Prefer Not to Disclose' },
+  { gender_code: '97', gender: 'Unknown' },
+  { gender_code: '98', gender: 'Not Collected' }
 ])
 
 # rubocop:enable Layout/FirstArrayElementIndentation, Layout/LineLength, Naming/VariableNumber

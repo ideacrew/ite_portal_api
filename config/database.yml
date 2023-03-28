@@ -58,6 +58,3 @@ production:
   database: <%= ENV["ITE_PORTAL_API_DATABASE_DATABASE"] %>
   username: <%= ENV["ITE_PORTAL_API_DATABASE_USERNAME"] %>
   password: <%= ENV["ITE_PORTAL_API_DATABASE_PASSWORD"] %>
-  database: ite_portal_api_production
-  username: ite_portal_api
-  password: <%= ENV["ITE_PORTAL_API_DATABASE_PASSWORD"] %>

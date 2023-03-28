@@ -478,4 +478,63 @@ ListLookups::ListGender.create([
   { gender_code: '98', gender: 'Not Collected' }
 ])
 
+ListLookups::ListReferralSource.create([
+  { referral_source_code: '1', referral_source: 'Individual, including Self-Referral' },
+  { referral_source_code: '2', referral_source: 'Alcohol/drug abuse care provider' },
+  { referral_source_code: '3', referral_source: 'Other health care provider' },
+  { referral_source_code: '4', referral_source: 'School (Educational)' },
+  { referral_source_code: '5', referral_source: 'Employer/Employee Assistance Program (EAP)' },
+  { referral_source_code: '6', referral_source: 'Other community referral' },
+  { referral_source_code: '7', referral_source: 'Criminal justice referral' },
+  { referral_source_code: '97', referral_source: 'Unknown' },
+  { referral_source_code: '98', referral_source: 'Not Collected' }
+])
+
+ListLookups::ListSmiSedStatus.create([
+  { smi_sed_code: '1', smi_sed: 'SMI' },
+  { smi_sed_code: '2', smi_sed: 'SED' },
+  { smi_sed_code: '3', smi_sed: 'At Risk for SED' },
+  { smi_sed_code: '4', smi_sed: 'Not SMI/SED' },
+  { smi_sed_code: '97', smi_sed: 'Unknown' },
+  { smi_sed_code: '98', smi_sed: 'Not Collected' }
+])
+
+ListLookups::ListCoOccurringStatus.create([
+  { co_occurring_sud_mh_code: '1', co_occurring_sud_mh: 'Yes' },
+  { co_occurring_sud_mh_code: '2', co_occurring_sud_mh: 'No' },
+  { co_occurring_sud_mh_code: '97', co_occurring_sud_mh: 'Unknown' },
+  { co_occurring_sud_mh_code: '98', co_occurring_sud_mh: 'Not Collected' }
+])
+
+ListLookups::ListLanguage.create([
+  { primary_language_code: '1', primary_language: 'English' },
+  { primary_language_code: '2', primary_language: 'Amharic' },
+  { primary_language_code: '3', primary_language: 'Arabic' },
+  { primary_language_code: '4', primary_language: 'Chinese' },
+  { primary_language_code: '5', primary_language: 'French' },
+  { primary_language_code: '6', primary_language: 'German' },
+  { primary_language_code: '7', primary_language: 'Hebrew' },
+  { primary_language_code: '8', primary_language: 'Hindi' },
+  { primary_language_code: '9', primary_language: 'Italian' },
+  { primary_language_code: '10', primary_language: 'Korean' },
+  { primary_language_code: '11', primary_language: 'Spanish' },
+  { primary_language_code: '12', primary_language: 'Tagalog' },
+  { primary_language_code: '13', primary_language: 'Urdu' },
+  { primary_language_code: '14', primary_language: 'Vietnamese' },
+  { primary_language_code: '95', primary_language: 'Other' },
+  { primary_language_code: '97', primary_language: 'Unknown' },
+  { primary_language_code: '98', primary_language: 'Not Collected' }
+])
+
+ListLookups::ListMaritalStatus.create([
+  { marital_status_code: '1', marital_status: 'Single or Never Married' },
+  { marital_status_code: '2', marital_status: 'Married or Domestic Partnership' },
+  { marital_status_code: '3', marital_status: 'Separated' },
+  { marital_status_code: '4', marital_status: 'Divorced' },
+  { marital_status_code: '5', marital_status: 'Widowed' },
+  { marital_status_code: '96', marital_status: 'Not Applicable' },
+  { marital_status_code: '97', marital_status: 'Unknown' },
+  { marital_status_code: '98', marital_status: 'Not Collected' }
+])
+
 # rubocop:enable Layout/FirstArrayElementIndentation, Layout/LineLength, Naming/VariableNumber

@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_321_175_251) do
+ActiveRecord::Schema[7.0].define(version: 20_230_328_150_712) do
   create_table 'addresses', force: :cascade do |t|
     t.string 'address_line1'
     t.string 'address_line2'
@@ -259,6 +259,54 @@ ActiveRecord::Schema[7.0].define(version: 20_230_321_175_251) do
     t.index ['client_id'], name: 'index_episodes_on_client_id'
   end
 
+  create_table 'list_co_occurring_statuses', force: :cascade do |t|
+    t.string 'co_occurring_sud_mh_code', null: false
+    t.string 'co_occurring_sud_mh'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['co_occurring_sud_mh_code'], name: 'index_co_occurring_sud_mh_code'
+  end
+
+  create_table 'list_employments', force: :cascade do |t|
+    t.string 'employment_code', null: false
+    t.string 'employment'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['employment_code'], name: 'index_employment_code'
+  end
+
+  create_table 'list_languages', force: :cascade do |t|
+    t.string 'primary_language_code', null: false
+    t.string 'primary_language'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['primary_language_code'], name: 'index_primary_language_code'
+  end
+
+  create_table 'list_marital_statuses', force: :cascade do |t|
+    t.string 'marital_status_code', null: false
+    t.string 'marital_status'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['marital_status_code'], name: 'index_marital_status_code'
+  end
+
+  create_table 'list_referral_sources', force: :cascade do |t|
+    t.string 'referral_source_code', null: false
+    t.string 'referral_source'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['referral_source_code'], name: 'index_referral_source_code'
+  end
+
+  create_table 'list_smi_sed_statuses', force: :cascade do |t|
+    t.string 'smi_sed_code', null: false
+    t.string 'smi_sed'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['smi_sed_code'], name: 'index_smi_sed_code'
+  end
+
   create_table 'master_claims', force: :cascade do |t|
     t.bigint 'master_claim_id', null: false
     t.string 'claim_record_id', null: false
@@ -398,6 +446,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_321_175_251) do
 
   create_table 'mhgps_enrollments', force: :cascade do |t|
     t.string 'mhgps_id', null: false
+    t.string 'medicaid_id'
     t.string 'full_name', null: false
     t.string 'first_name', null: false
     t.string 'last_name', null: false

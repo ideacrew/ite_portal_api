@@ -599,6 +599,66 @@ ListLookups::ListIncomeSource.create([
   { income_source_code: '98', income_source: 'Not Collected' }
 ])
 
+ListLookups::ListPregnantStatus.create([
+  { pregnant_code: '1', pregnant: 'Yes' },
+  { pregnant_code: '2', pregnant: 'No' },
+  { pregnant_code: '96', pregnant: 'Not Applicable' },
+  { pregnant_code: '97', pregnant: 'Unknown' },
+  { pregnant_code: '98', pregnant: 'Not Collected' }
+])
+
+ListLookups::ListCriminalJusticeReferral.create([
+  { criminal_justice_referral_code: '1', criminal_justice_referral: 'State/Federal Court' },
+  { criminal_justice_referral_code: '2', criminal_justice_referral: 'Other Court' },
+  { criminal_justice_referral_code: '3', criminal_justice_referral: 'Probation/Parole' },
+  { criminal_justice_referral_code: '4', criminal_justice_referral: 'Other Recognized Legal Entity' },
+  { criminal_justice_referral_code: '5', criminal_justice_referral: 'Diversionary Program' },
+  { criminal_justice_referral_code: '6', criminal_justice_referral: 'Prison' },
+  { criminal_justice_referral_code: '7', criminal_justice_referral: 'DUI/DWI' },
+  { criminal_justice_referral_code: '8', criminal_justice_referral: 'Other' },
+  { criminal_justice_referral_code: '96', criminal_justice_referral: 'Not Applicable' },
+  { criminal_justice_referral_code: '97', criminal_justice_referral: 'Unknown' },
+  { criminal_justice_referral_code: '98', criminal_justice_referral: 'Not Collected' }
+])
+
+ListLookups::ListPrimaryPaymentSource.create([
+  { primary_payment_source_code: '1', primary_payment_source: 'Self-pay' },
+  { primary_payment_source_code: '2', primary_payment_source: 'Medicare' },
+  { primary_payment_source_code: '3', primary_payment_source: 'Medicaid' },
+  { primary_payment_source_code: '4', primary_payment_source: 'Tricare' },
+  { primary_payment_source_code: '5', primary_payment_source: 'Alliance/ICP' },
+  { primary_payment_source_code: '6', primary_payment_source: 'Other government funding' },
+  { primary_payment_source_code: '7', primary_payment_source: "Worker's compensation" },
+  { primary_payment_source_code: '8', primary_payment_source: 'Private health insurance companies' },
+  { primary_payment_source_code: '9', primary_payment_source: 'No charge (free, charity, special research or teaching)' },
+  { primary_payment_source_code: '97', primary_payment_source: 'Unknown' },
+  { primary_payment_source_code: '98', primary_payment_source: 'Not Collected' }
+])
+
+ListLookups::ListHealthInsurance.create([
+  { health_insurance_code: '1', health_insurance: 'Private Insurance' },
+  { health_insurance_code: '2', health_insurance: 'Medicare' },
+  { health_insurance_code: '3', health_insurance: 'Medicaid' },
+  { health_insurance_code: '4', health_insurance: 'Alliance or ICP' },
+  { health_insurance_code: '5', health_insurance: 'Tricare' },
+  { health_insurance_code: '6', health_insurance: 'Other' },
+  { health_insurance_code: '7', health_insurance: 'None' },
+  { health_insurance_code: '97', health_insurance: 'Unknown' },
+  { health_insurance_code: '98', health_insurance: 'Not Collected' }
+])
+
+ListLookups::ListSelfHelpGroupAttendanceFrequency.create([
+  { self_help_group_admission_code: '1', self_help_group_admission: 'Not Attendance' },
+  { self_help_group_admission_code: '2', self_help_group_admission: 'Less than once a week' },
+  { self_help_group_admission_code: '3', self_help_group_admission: 'About once a week' },
+  { self_help_group_admission_code: '4', self_help_group_admission: '2-3 times per week' },
+  { self_help_group_admission_code: '5', self_help_group_admission: 'At least 4 times a week' },
+  { self_help_group_admission_code: '6', self_help_group_admission: 'Some attendance' },
+  { self_help_group_admission_code: '96', self_help_group_admission: 'Not Applicable' },
+  { self_help_group_admission_code: '97', self_help_group_admission: 'Unknown' },
+  { self_help_group_admission_code: '98', self_help_group_admission: 'Not Collected' }
+])
+
 ListLookups::ListSubstanceName.create([
   { substance_name_code: '1', substance_name: 'None',	detail_substance_name_code: '9996', detail_substance_name: 'Not Applicable' },
   { substance_name_code: '2', substance_name: 'Alcohol',	detail_substance_name_code: '201', detail_substance_name: 'Alcohol' },

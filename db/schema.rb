@@ -275,6 +275,14 @@ ActiveRecord::Schema[7.0].define(version: 20_230_329_194_121) do
     t.index ['collateral_status_code'], name: 'index_collateral_status_code'
   end
 
+  create_table 'list_criminal_justice_referrals', force: :cascade do |t|
+    t.string 'criminal_justice_referral_code', null: false
+    t.string 'criminal_justice_referral'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['criminal_justice_referral_code'], name: 'index_criminal_justice_referral_code'
+  end
+
   create_table 'list_discharge_reasons', force: :cascade do |t|
     t.string 'discharge_reason_code', null: false
     t.string 'discharge_reason'
@@ -313,6 +321,14 @@ ActiveRecord::Schema[7.0].define(version: 20_230_329_194_121) do
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['gender_code'], name: 'index_gender_code'
+  end
+
+  create_table 'list_health_insurances', force: :cascade do |t|
+    t.string 'health_insurance_code', null: false
+    t.string 'health_insurance'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['health_insurance_code'], name: 'index_health_insurance_code'
   end
 
   create_table 'list_income_sources', force: :cascade do |t|
@@ -371,6 +387,22 @@ ActiveRecord::Schema[7.0].define(version: 20_230_329_194_121) do
     t.index ['opioid_therapy_code'], name: 'index_opioid_therapy_code'
   end
 
+  create_table 'list_pregnant_statuses', force: :cascade do |t|
+    t.string 'pregnant_code', null: false
+    t.string 'pregnant'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['pregnant_code'], name: 'index_pregnant_code'
+  end
+
+  create_table 'list_primary_payment_sources', force: :cascade do |t|
+    t.string 'primary_payment_source_code', null: false
+    t.string 'primary_payment_source'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['primary_payment_source_code'], name: 'index_primary_payment_source_code'
+  end
+
   create_table 'list_races', force: :cascade do |t|
     t.string 'race_code', null: false
     t.string 'race'
@@ -401,6 +433,14 @@ ActiveRecord::Schema[7.0].define(version: 20_230_329_194_121) do
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['school_attendance_code'], name: 'index_school_attendance_code'
+  end
+
+  create_table 'list_self_help_group_attendance_frequencies', force: :cascade do |t|
+    t.string 'self_help_group_admission_code', null: false
+    t.string 'self_help_group_admission'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['self_help_group_admission_code'], name: 'index_self_help_group_admission_code'
   end
 
   create_table 'list_sexual_orientations', force: :cascade do |t|

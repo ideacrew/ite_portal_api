@@ -5,7 +5,7 @@ concurrency:
   cancel-in-progress: true
 
 on:
-  workflow_dispatch: true
+  workflow_dispatch
   push:
     branches:
       - trunk

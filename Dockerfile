@@ -17,7 +17,6 @@ RUN apt-get update \
       unzip \
       zip \
       zlibc \
-      freetds-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && truncate -s 0 /var/log/*log

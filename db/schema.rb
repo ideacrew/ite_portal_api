@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_328_150_712) do
+ActiveRecord::Schema[7.0].define(version: 20_230_329_153_631) do
   create_table 'addresses', force: :cascade do |t|
     t.string 'address_line1'
     t.string 'address_line2'
@@ -315,12 +315,28 @@ ActiveRecord::Schema[7.0].define(version: 20_230_328_150_712) do
     t.index ['gender_code'], name: 'index_gender_code'
   end
 
+  create_table 'list_income_sources', force: :cascade do |t|
+    t.string 'income_source_code', null: false
+    t.string 'income_source'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['income_source_code'], name: 'index_income_source_code'
+  end
+
   create_table 'list_languages', force: :cascade do |t|
     t.string 'primary_language_code', null: false
     t.string 'primary_language'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['primary_language_code'], name: 'index_primary_language_code'
+  end
+
+  create_table 'list_legal_statuses', force: :cascade do |t|
+    t.string 'legal_status_code', null: false
+    t.string 'legal_status'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['legal_status_code'], name: 'index_legal_status_code'
   end
 
   create_table 'list_living_arrangements', force: :cascade do |t|
@@ -337,6 +353,14 @@ ActiveRecord::Schema[7.0].define(version: 20_230_328_150_712) do
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['marital_status_code'], name: 'index_marital_status_code'
+  end
+
+  create_table 'list_not_in_labor_details', force: :cascade do |t|
+    t.string 'not_in_labor_code', null: false
+    t.string 'not_in_labor'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['not_in_labor_code'], name: 'index_not_in_labor_code'
   end
 
   create_table 'list_races', force: :cascade do |t|
@@ -363,6 +387,22 @@ ActiveRecord::Schema[7.0].define(version: 20_230_328_150_712) do
     t.index ['referral_source_code'], name: 'index_referral_source_code'
   end
 
+  create_table 'list_school_attendance_statuses', force: :cascade do |t|
+    t.string 'school_attendance_code', null: false
+    t.string 'school_attendance'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['school_attendance_code'], name: 'index_school_attendance_code'
+  end
+
+  create_table 'list_sexual_orientations', force: :cascade do |t|
+    t.string 'sexual_orientation_code', null: false
+    t.string 'sexual_orientation'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['sexual_orientation_code'], name: 'index_sexual_orientation_code'
+  end
+
   create_table 'list_smi_sed_statuses', force: :cascade do |t|
     t.string 'smi_sed_code', null: false
     t.string 'smi_sed'
@@ -378,6 +418,14 @@ ActiveRecord::Schema[7.0].define(version: 20_230_328_150_712) do
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['treatment_setting_code'], name: 'index_treatment_setting_code'
+  end
+
+  create_table 'list_veteran_statuses', force: :cascade do |t|
+    t.string 'veteran_status_code', null: false
+    t.string 'veteran_status'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['veteran_status_code'], name: 'index_veteran_status_code'
   end
 
   create_table 'master_claims', force: :cascade do |t|

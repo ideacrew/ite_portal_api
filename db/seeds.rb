@@ -538,4 +538,65 @@ ListLookups::ListMaritalStatus.create([
   { marital_status_code: '98', marital_status: 'Not Collected' }
 ])
 
+ListLookups::ListSchoolAttendanceStatus.create([
+  { school_attendance_code: '1', school_attendance: 'Yes' },
+  { school_attendance_code: '2', school_attendance: 'No' },
+  { school_attendance_code: '96', school_attendance: 'Not Applicable' },
+  { school_attendance_code: '97', school_attendance: 'Unknown' },
+  { school_attendance_code: '98', school_attendance: 'Not Collected' }
+])
+
+ListLookups::ListLegalStatus.create([
+  { legal_status_code: '1', legal_status: 'Voluntary, Self' },
+  { legal_status_code: '2', legal_status: 'Voluntary, Others' },
+  { legal_status_code: '3', legal_status: 'Involuntary, Civil' },
+  { legal_status_code: '4', legal_status: 'Involuntary, Criminal' },
+  { legal_status_code: '5', legal_status: 'Involuntary, Juvenile Justice' },
+  { legal_status_code: '6', legal_status: 'Involuntary, Civil, Sexual' },
+  { legal_status_code: '96', legal_status: 'Not Applicable' },
+  { legal_status_code: '97', legal_status: 'Unknown' },
+  { legal_status_code: '98', legal_status: 'Not Collected' }
+])
+
+ListLookups::ListSexualOrientation.create([
+  { sexual_orientation_code: '1', sexual_orientation: 'Lesbian, gay or homosexual' },
+  { sexual_orientation_code: '2', sexual_orientation: 'Straight or heterosexual' },
+  { sexual_orientation_code: '3', sexual_orientation: 'Bisexual' },
+  { sexual_orientation_code: '4', sexual_orientation: 'Something else' },
+  { sexual_orientation_code: '95', sexual_orientation: 'Prefer Not to Disclose' },
+  { sexual_orientation_code: '97', sexual_orientation: 'Unknown' },
+  { sexual_orientation_code: '98', sexual_orientation: 'Not Collected' }
+])
+
+ListLookups::ListVeteranStatus.create([
+  { veteran_status_code: '1', veteran_status: 'Yes' },
+  { veteran_status_code: '2', veteran_status: 'No' },
+  { veteran_status_code: '97', veteran_status: 'Unknown' },
+  { veteran_status_code: '98', veteran_status: 'Not Collected' }
+])
+
+ListLookups::ListNotInLaborDetail.create([
+  { not_in_labor_code: '1', not_in_labor: 'Homemaker' },
+  { not_in_labor_code: '2', not_in_labor: 'Student' },
+  { not_in_labor_code: '3', not_in_labor: 'Retired' },
+  { not_in_labor_code: '4', not_in_labor: 'Disabled' },
+  { not_in_labor_code: '5', not_in_labor: 'Resident of Institution' },
+  { not_in_labor_code: '6', not_in_labor: 'Other or Not Specified' },
+  { not_in_labor_code: '7', not_in_labor: 'Sheltered or Non-competitive Employment' },
+  { not_in_labor_code: '96', not_in_labor: 'Not Applicable' },
+  { not_in_labor_code: '97', not_in_labor: 'Unknown' },
+  { not_in_labor_code: '98', not_in_labor: 'Not Collected' }
+])
+
+ListLookups::ListIncomeSource.create([
+  { income_source_code: '1', income_source: 'Wage/Salary' },
+  { income_source_code: '2', income_source: 'Public Assistance (TANF, etc.)' },
+  { income_source_code: '3', income_source: 'Retirement/Pension' },
+  { income_source_code: '4', income_source: 'Disability (SSI, SSDI, etc.)' },
+  { income_source_code: '95', income_source: 'Other' },
+  { income_source_code: '96', income_source: 'None' },
+  { income_source_code: '97', income_source: 'Unknown' },
+  { income_source_code: '98', income_source: 'Not Collected' }
+])
+
 # rubocop:enable Layout/FirstArrayElementIndentation, Layout/LineLength, Naming/VariableNumber

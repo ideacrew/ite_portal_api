@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_324_154_517) do
+ActiveRecord::Schema[7.0].define(version: 20_230_328_150_712) do
   create_table 'addresses', force: :cascade do |t|
     t.string 'address_line1'
     t.string 'address_line2'
@@ -259,6 +259,22 @@ ActiveRecord::Schema[7.0].define(version: 20_230_324_154_517) do
     t.index ['client_id'], name: 'index_episodes_on_client_id'
   end
 
+  create_table 'list_co_occurring_statuses', force: :cascade do |t|
+    t.string 'co_occurring_sud_mh_code', null: false
+    t.string 'co_occurring_sud_mh'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['co_occurring_sud_mh_code'], name: 'index_co_occurring_sud_mh_code'
+  end
+
+  create_table 'list_collateral_statuses', force: :cascade do |t|
+    t.string 'collateral_status_code', null: false
+    t.string 'collateral_status'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['collateral_status_code'], name: 'index_collateral_status_code'
+  end
+
   create_table 'list_discharge_reasons', force: :cascade do |t|
     t.string 'discharge_reason_code', null: false
     t.string 'discharge_reason'
@@ -291,29 +307,6 @@ ActiveRecord::Schema[7.0].define(version: 20_230_324_154_517) do
     t.index ['ethnicity_code'], name: 'index_ethnicity_code'
   end
 
-  create_table 'list_living_arrangements', force: :cascade do |t|
-    t.string 'living_arrangements_code', null: false
-    t.string 'living_arrangements'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['living_arrangements_code'], name: 'index_living_arrangements_code'
-  end
-
-  create_table 'list_races', force: :cascade do |t|
-    t.string 'race_code', null: false
-    t.string 'race'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['race_code'], name: 'index_race_code'
-
-  create_table 'list_collateral_statuses', force: :cascade do |t|
-    t.string 'collateral_status_code', null: false
-    t.string 'collateral_status'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['collateral_status_code'], name: 'index_collateral_status_code'
-  end
-
   create_table 'list_genders', force: :cascade do |t|
     t.string 'gender_code', null: false
     t.string 'gender'
@@ -322,12 +315,60 @@ ActiveRecord::Schema[7.0].define(version: 20_230_324_154_517) do
     t.index ['gender_code'], name: 'index_gender_code'
   end
 
+  create_table 'list_languages', force: :cascade do |t|
+    t.string 'primary_language_code', null: false
+    t.string 'primary_language'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['primary_language_code'], name: 'index_primary_language_code'
+  end
+
+  create_table 'list_living_arrangements', force: :cascade do |t|
+    t.string 'living_arrangements_code', null: false
+    t.string 'living_arrangements'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['living_arrangements_code'], name: 'index_living_arrangements_code'
+  end
+
+  create_table 'list_marital_statuses', force: :cascade do |t|
+    t.string 'marital_status_code', null: false
+    t.string 'marital_status'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['marital_status_code'], name: 'index_marital_status_code'
+  end
+
+  create_table 'list_races', force: :cascade do |t|
+    t.string 'race_code', null: false
+    t.string 'race'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['race_code'], name: 'index_race_code'
+  end
+
   create_table 'list_record_types', force: :cascade do |t|
     t.string 'record_type_code', null: false
     t.string 'record_type'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['record_type_code'], name: 'index_record_type_code'
+  end
+
+  create_table 'list_referral_sources', force: :cascade do |t|
+    t.string 'referral_source_code', null: false
+    t.string 'referral_source'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['referral_source_code'], name: 'index_referral_source_code'
+  end
+
+  create_table 'list_smi_sed_statuses', force: :cascade do |t|
+    t.string 'smi_sed_code', null: false
+    t.string 'smi_sed'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['smi_sed_code'], name: 'index_smi_sed_code'
   end
 
   create_table 'list_treatment_settings', force: :cascade do |t|

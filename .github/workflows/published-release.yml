@@ -21,16 +21,16 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - name: Update DB
-        env:
-          ITE_PORTAL_API_DATABASE_HOST: ${{ secrets.PROVIDER_GATEWAY_API_DATABASE_HOST }}
-          ITE_PORTAL_API_DATABASE_USERNAME: ${{ secrets.PROVIDER_GATEWAY_API_DATABASE_USERNAME }}
-          ITE_PORTAL_API_DATABASE_PASSWORD: ${{ secrets.PROVIDER_GATEWAY_API_DATABASE_PASSWORD }}
-          ITE_PORTAL_API_DATABASE_DATABASE: 'ite_portal_api_production'
-          RAILS_ENV: production
-        run: |
-          bin/rails db:create
-          bin/rails db:migrate
+      # - name: Update DB
+      #   env:
+      #     ITE_PORTAL_API_DATABASE_HOST: ${{ secrets.PROVIDER_GATEWAY_API_DATABASE_HOST }}
+      #     ITE_PORTAL_API_DATABASE_USERNAME: ${{ secrets.PROVIDER_GATEWAY_API_DATABASE_USERNAME }}
+      #     ITE_PORTAL_API_DATABASE_PASSWORD: ${{ secrets.PROVIDER_GATEWAY_API_DATABASE_PASSWORD }}
+      #     ITE_PORTAL_API_DATABASE_DATABASE: 'ite_portal_api_production'
+      #     RAILS_ENV: production
+      #   run: |
+      #     bin/rails db:create
+      #     bin/rails db:migrate
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:

@@ -435,6 +435,7 @@ ListLookups::ListEmployment.create([
   { employment_code: '5', employment: 'Employed' },
   { employment_code: '97', employment: 'Unknown' },
   { employment_code: '98', employment: 'Not Collected' }
+])
 
 ListLookups::ListRecordType.create([
   { record_type_code: 'A', record_type: 'SUD Initial Admission' },

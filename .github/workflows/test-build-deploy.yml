@@ -9,6 +9,14 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    services:
+      mssql:
+        image: mcr.microsoft.com/mssql/server:2022-latest
+        ports:
+          - 1433:1433
+        env:
+          ACCEPT_EULA: 'Y'
+          MSSQL_SA_PASSWORD: 'TesTing1@3'
     steps:
       - uses: actions/checkout@v3
       - name: Install FreeTDS
@@ -19,9 +27,9 @@ jobs:
           bundler-cache: true
       - name: Run Rspec
         env:
-          ITE_PORTAL_API_DATABASE_HOST: ${{ secrets.PROVIDER_GATEWAY_API_DATABASE_HOST }}
-          ITE_PORTAL_API_DATABASE_USERNAME: ${{ secrets.PROVIDER_GATEWAY_API_DATABASE_USERNAME }}
-          ITE_PORTAL_API_DATABASE_PASSWORD: ${{ secrets.PROVIDER_GATEWAY_API_DATABASE_PASSWORD }}
+          ITE_PORTAL_API_DATABASE_HOST: '127.0.0.1'
+          ITE_PORTAL_API_DATABASE_USERNAME: 'sa'
+          ITE_PORTAL_API_DATABASE_PASSWORD: 'TesTing1@3'
           ITE_PORTAL_API_DATABASE_DATABASE: 'ite_portal_api_test'
           RAILS_ENV: test
         run: |

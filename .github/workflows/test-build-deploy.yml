@@ -5,17 +5,32 @@ concurrency:
 on:
   push:
     branches:
-      - 'trunk'
+      - trunk
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: sudo apt-get install -yq freetds-bin
+      - name: Install FreeTDS
+        run: |
+          sudo apt install -y freetds-dev
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - run: bundle exec rspec
+      - name: Run Rspec
+        env:
+          PROVIDER_GATEWAY_API_DATABASE_HOST: ${{ secrets.PROVIDER_GATEWAY_API_DATABASE_HOST }}
+          PROVIDER_GATEWAY_API_DATABASE_USERNAME: ${{ secrets.PROVIDER_GATEWAY_API_DATABASE_USERNAME }}
+          PROVIDER_GATEWAY_API_DATABASE_PASSWORD: ${{ secrets.PROVIDER_GATEWAY_API_DATABASE_PASSWORD }}
+          PROVIDER_GATEWAY_API_DATABASE_DATABASE: 'provider_gateway_api_test'
+          RAILS_ENV: test
+        run: |
+          bin/rails db:drop
+          bin/rails db:create
+          bin/rails db:migrate
+          bin/rails db:seed
+          bundle exec rspec --format d
+          bin/rails db:drop
   build:
     needs: [test]
     runs-on: ubuntu-latest
@@ -66,6 +81,22 @@ jobs:
     environment: dev
     steps:
       - uses: actions/checkout@v3
+      - name: Install FreeTDS
+        run: |
+          sudo apt install -y freetds-dev
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Update DB
+        env:
+          PROVIDER_GATEWAY_API_DATABASE_HOST: ${{ secrets.PROVIDER_GATEWAY_API_DATABASE_HOST }}
+          PROVIDER_GATEWAY_API_DATABASE_USERNAME: ${{ secrets.PROVIDER_GATEWAY_API_DATABASE_USERNAME }}
+          PROVIDER_GATEWAY_API_DATABASE_PASSWORD: ${{ secrets.PROVIDER_GATEWAY_API_DATABASE_PASSWORD }}
+          PROVIDER_GATEWAY_API_DATABASE_DATABASE: 'provider_gateway_api_development'
+          RAILS_ENV: production
+        run: |
+          bin/rails db:create
+          bin/rails db:migrate
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:

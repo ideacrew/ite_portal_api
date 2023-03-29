@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_321_175_251) do
+ActiveRecord::Schema[7.0].define(version: 20_230_323_185_436) do
   create_table 'addresses', force: :cascade do |t|
     t.string 'address_line1'
     t.string 'address_line2'
@@ -257,6 +257,39 @@ ActiveRecord::Schema[7.0].define(version: 20_230_321_175_251) do
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['client_id'], name: 'index_episodes_on_client_id'
+  end
+
+  create_table 'list_collateral_statuses', force: :cascade do |t|
+    t.string 'collateral_status_code', null: false
+    t.string 'collateral_status'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['collateral_status_code'], name: 'index_collateral_status_code'
+  end
+
+  create_table 'list_genders', force: :cascade do |t|
+    t.string 'gender_code', null: false
+    t.string 'gender'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['gender_code'], name: 'index_gender_code'
+  end
+
+  create_table 'list_record_types', force: :cascade do |t|
+    t.string 'record_type_code', null: false
+    t.string 'record_type'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['record_type_code'], name: 'index_record_type_code'
+  end
+
+  create_table 'list_treatment_settings', force: :cascade do |t|
+    t.string 'treatment_setting_code', null: false
+    t.string 'treatment_setting'
+    t.string 'asam_level'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['treatment_setting_code'], name: 'index_treatment_setting_code'
   end
 
   create_table 'master_claims', force: :cascade do |t|

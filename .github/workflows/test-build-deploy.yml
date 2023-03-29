@@ -1,4 +1,7 @@
 name: Test, Build, Deploy (to DEV)
+concurrency:
+  group: dev-${{ github.ref }}
+  cancel-in-progress: true
 on:
   push:
     branches:

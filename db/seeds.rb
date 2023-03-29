@@ -538,4 +538,94 @@ ListLookups::ListMaritalStatus.create([
   { marital_status_code: '98', marital_status: 'Not Collected' }
 ])
 
+ListLookups::ListSubstanceName.create([
+  { substance_name_code: '1', substance_name: 'None',	detail_substance_name_code: '9996', detail_substance_name: 'Not Applicable' },
+  { substance_name_code: '2', substance_name: 'Alcohol',	detail_substance_name_code: '201', detail_substance_name: 'Alcohol' },
+  { substance_name_code: '3', substance_name: 'Cocaine/crack',	detail_substance_name_code: '301', detail_substance_name: 'Crack' },
+  { substance_name_code: '3', substance_name: 'Cocaine/crack',	detail_substance_name_code: '302', detail_substance_name: 'Other cocaine' },
+  { substance_name_code: '4', substance_name: 'Marijuana/hashish',	detail_substance_name_code: '401', detail_substance_name: 'Marijuana/hashish, THC, and any other cannabis sativa preparations' },
+  { substance_name_code: '5', substance_name: 'Heroin',	detail_substance_name_code: '501', detail_substance_name: 'Heroin' },
+  { substance_name_code: '6', substance_name: 'Non-prescription Methadone',	detail_substance_name_code: '601', detail_substance_name: 'Non-prescription Methadone' },
+  { substance_name_code: '7', substance_name: 'Other opiates and synthetics',	detail_substance_name_code: '701', detail_substance_name: 'Codeine' },
+  { substance_name_code: '7', substance_name: 'Other opiates and synthetics',	detail_substance_name_code: '702', detail_substance_name: 'Propoxyphene (Darvon)' },
+  { substance_name_code: '7', substance_name: 'Other opiates and synthetics',	detail_substance_name_code: '703', detail_substance_name: 'Oxycodone (Oxycontin)' },
+  { substance_name_code: '7', substance_name: 'Other opiates and synthetics',	detail_substance_name_code: '704', detail_substance_name: 'Meperidine (Demerol)' },
+  { substance_name_code: '7', substance_name: 'Other opiates and synthetics',	detail_substance_name_code: '705', detail_substance_name: 'Hydromorphone (Dilaudid)' },
+  { substance_name_code: '7', substance_name: 'Other opiates and synthetics',	detail_substance_name_code: '706', detail_substance_name: 'Butorphanol (Stadol), morphine (MS Contin), opium, and other narcotic analgesics, opiates, or synthetics' },
+  { substance_name_code: '7', substance_name: 'Other opiates and synthetics',	detail_substance_name_code: '707', detail_substance_name: 'Pentazocine (Talwin)' },
+  { substance_name_code: '7', substance_name: 'Other opiates and synthetics',	detail_substance_name_code: '708', detail_substance_name: 'Hydrocodone (Vicodin)' },
+  { substance_name_code: '7', substance_name: 'Other opiates and synthetics',	detail_substance_name_code: '709', detail_substance_name: 'Tramadol (Ultram)' },
+  { substance_name_code: '7', substance_name: 'Other opiates and synthetics',	detail_substance_name_code: '710', detail_substance_name: 'Buprenorphine (Subutex, Suboxone)' },
+  { substance_name_code: '8', substance_name: 'PCP – Phencyclidine',	detail_substance_name_code: '801', detail_substance_name: 'PCP' },
+  { substance_name_code: '9', substance_name: 'Hallucinogens',	detail_substance_name_code: '901', detail_substance_name: 'LSD' },
+  { substance_name_code: '9', substance_name: 'Hallucinogens',	detail_substance_name_code: '902', detail_substance_name: 'DMT, mescaline, peyote, psilocybin, STP, and other hallucinogens' },
+  { substance_name_code: '10', substance_name:	'Methamphetamine/Speed',	detail_substance_name_code: '1001', detail_substance_name: 'Methamphetamine/Speed' },
+  { substance_name_code: '11', substance_name:	'Other amphetamines',	detail_substance_name_code: '1101', detail_substance_name: 'Amphetamine' },
+  { substance_name_code: '11', substance_name:	'Other amphetamines',	detail_substance_name_code: '1103', detail_substance_name: 'Methylenedioxymethamphetamine (MDMA, Ecstasy)' },
+  { substance_name_code: '11', substance_name:	'Other amphetamines',	detail_substance_name_code: '1109', detail_substance_name: 'Bath salts, phenmetrazine, and other amines and related drugs' },
+  { substance_name_code: '12', substance_name:	'Other stimulants',	detail_substance_name_code: '1201', detail_substance_name: 'Other stimulants' },
+  { substance_name_code: '12', substance_name:	'Other stimulants',	detail_substance_name_code: '1202', detail_substance_name: 'Methylphenidate (Ritalin)' },
+  { substance_name_code: '13', substance_name:	'Benzodiazepines',	detail_substance_name_code: '1301', detail_substance_name: 'Alprazolam (Xanax)' },
+  { substance_name_code: '13', substance_name:	'Benzodiazepines',	detail_substance_name_code: '1302', detail_substance_name: 'Chlordiazepoxide (Librium)' },
+  { substance_name_code: '13', substance_name:	'Benzodiazepines',	detail_substance_name_code: '1303', detail_substance_name: 'Clorazepate (Tranxene)' },
+  { substance_name_code: '13', substance_name:	'Benzodiazepines',	detail_substance_name_code: '1304', detail_substance_name: 'Diazepam (Valium)' },
+  { substance_name_code: '13', substance_name:	'Benzodiazepines',	detail_substance_name_code: '1305', detail_substance_name: 'Flurazepam (Dalmane)' },
+  { substance_name_code: '13', substance_name:	'Benzodiazepines',	detail_substance_name_code: '1306', detail_substance_name: 'Lorazepam (Ativan)' },
+  { substance_name_code: '13', substance_name:	'Benzodiazepines',	detail_substance_name_code: '1307', detail_substance_name: 'Triazolam (Halcion)' },
+  { substance_name_code: '13', substance_name:	'Benzodiazepines',	detail_substance_name_code: '1308', detail_substance_name: 'Halazepam, oxazepam (Serax), prazepam, temazepam (Restoril), and other benzodiazepines' },
+  { substance_name_code: '13', substance_name:	'Benzodiazepines',	detail_substance_name_code: '1309', detail_substance_name: 'Flunitrazepam (Rohypnol)' },
+  { substance_name_code: '13', substance_name:	'Benzodiazepines',	detail_substance_name_code: '1310', detail_substance_name: 'Clonazepam (Klonopin, Rivotril)' },
+  { substance_name_code: '14', substance_name:	'Other tranquilizers',	detail_substance_name_code: '1401', detail_substance_name: 'Meprobamate (Miltown)' },
+  { substance_name_code: '14', substance_name:	'Other tranquilizers',	detail_substance_name_code: '1403', detail_substance_name: 'Other non-benzodiazepine tranquilizers' },
+  { substance_name_code: '15', substance_name:	'Barbiturates',	detail_substance_name_code: '1501', detail_substance_name: 'Phenobarbital' },
+  { substance_name_code: '15', substance_name:	'Barbiturates',	detail_substance_name_code: '1502', detail_substance_name: 'Secobarbital/Amobarbital (Tuinal)' },
+  { substance_name_code: '15', substance_name:	'Barbiturates',	detail_substance_name_code: '1503', detail_substance_name: 'Secobarbital (Seconal)' },
+  { substance_name_code: '15', substance_name:	'Barbiturates',	detail_substance_name_code: '1509', detail_substance_name: 'Amobarbital, pentobarbital (Nembutal), and other barbiturate sedatives' },
+  { substance_name_code: '16', substance_name:	'Other sedatives or hypnotics',	detail_substance_name_code: '1601', detail_substance_name: 'Ethchlorvynol (Placidyl)' },
+  { substance_name_code: '16', substance_name:	'Other sedatives or hypnotics',	detail_substance_name_code: '1602', detail_substance_name: 'Glutethimide (Doriden)' },
+  { substance_name_code: '16', substance_name:	'Other sedatives or hypnotics',	detail_substance_name_code: '1603', detail_substance_name: 'Methaqualone (Quaalude)' },
+  { substance_name_code: '16', substance_name:	'Other sedatives or hypnotics',	detail_substance_name_code: '1604', detail_substance_name: 'Chloral hydrate and other non-barbiturate sedatives/hypnotics' },
+  { substance_name_code: '17', substance_name:	'Inhalants',	detail_substance_name_code: '1701', detail_substance_name: 'Aerosols' },
+  { substance_name_code: '17', substance_name:	'Inhalants',	detail_substance_name_code: '1702', detail_substance_name: 'Nitrites' },
+  { substance_name_code: '17', substance_name:	'Inhalants',	detail_substance_name_code: '1703', detail_substance_name: 'Gasoline, glue, and other inappropriately inhaled products 1704 Solvents (paint thinner and other solvents)' },
+  { substance_name_code: '17', substance_name:	'Inhalants',	detail_substance_name_code: '1705', detail_substance_name: 'Anesthetics (chloroform, ether, nitrous oxide, and other anesthetics)' },
+  { substance_name_code: '18', substance_name:	'Over-the-counter medications',	detail_substance_name_code: '1801', detail_substance_name: 'Diphenhydramine' },
+  { substance_name_code: '18', substance_name:	'Over-the-counter medications',	detail_substance_name_code: '1809', detail_substance_name: 'Other antihistamines, aspirin, Dextromethorphan (DXM) and other cough syrups, ephedrine, sleep aids, and any other legally obtained, non-prescription medication' },
+  { substance_name_code: '20', substance_name:	'Other drugs',	detail_substance_name_code: '2001', detail_substance_name: 'Diphenylhydantoin/Phenytoin (Dilantin)' },
+  { substance_name_code: '20', substance_name:	'Other drugs',	detail_substance_name_code: '2002', detail_substance_name: 'Synthetic Cannabinoid (Spice), Carisoprodol (Soma), and other drugs' },
+  { substance_name_code: '20', substance_name:	'Other drugs',	detail_substance_name_code: '2003', detail_substance_name: 'GHB/GBL (gamma-hydroxybutyrate, gamma-butyrolactone) 2004 Ketamine (Special K)' },
+  { substance_name_code: '96', substance_name:	'Not Applicable',	detail_substance_name_code: '9996', detail_substance_name: 'Not Applicable – Use when the value in Substance Use is 1 (None).' },
+  { substance_name_code: '97', substance_name:	'Unknown',	detail_substance_name_code: '9997', detail_substance_name: 'Unknown – Individual client value is unknown.' },
+  { substance_name_code: '98', substance_name:	'Not Collected',	detail_substance_name_code: '9998', detail_substance_name: 'Not Collected – Provider does not collect this field.' }
+])
+
+ListLookups::ListSubstanceUseFrequency.create([
+  { primary_su_frequency_admission_code: '1', primary_su_frequency_admission: 'No Use In The Past Month' },
+  { primary_su_frequency_admission_code: '2', primary_su_frequency_admission: '1-3 Days In Past Month' },
+  { primary_su_frequency_admission_code: '3', primary_su_frequency_admission: '1-2 Days In Past Week' },
+  { primary_su_frequency_admission_code: '4', primary_su_frequency_admission: '3-6 Days In Past Week' },
+  { primary_su_frequency_admission_code: '5', primary_su_frequency_admission: 'Daily' },
+  { primary_su_frequency_admission_code: '96', primary_su_frequency_admission: 'Not Applicable' },
+  { primary_su_frequency_admission_code: '97', primary_su_frequency_admission: 'Unknown' },
+  { primary_su_frequency_admission_code: '98', primary_su_frequency_admission: 'Not Collected' }
+])
+
+ListLookups::ListSubstanceUseRoute.create([
+  { primary_su_route_code: '1', primary_su_route: 'Oral' },
+  { primary_su_route_code: '2', primary_su_route: 'Smoking' },
+  { primary_su_route_code: '3', primary_su_route: 'Inhalation' },
+  { primary_su_route_code: '4', primary_su_route: 'Injection' },
+  { primary_su_route_code: '20', primary_su_route: 'Other' },
+  { primary_su_route_code: '96', primary_su_route: 'Not Applicable' },
+  { primary_su_route_code: '97', primary_su_route: 'Unknown' },
+  { primary_su_route_code: '98', primary_su_route: 'Not Collected' }
+])
+
+ListLookups::ListOpioidTherapyUse.create([
+  { opioid_therapy_code: '1', opioid_therapy: 'Yes' },
+  { opioid_therapy_code: '2', opioid_therapy: 'No' },
+  { opioid_therapy_code: '96', opioid_therapy: 'Not Applicable' },
+  { opioid_therapy_code: '97', opioid_therapy: 'Unknown' },
+  { opioid_therapy_code: '98', opioid_therapy: 'Not Collected' }
+])
 # rubocop:enable Layout/FirstArrayElementIndentation, Layout/LineLength, Naming/VariableNumber

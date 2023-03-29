@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_328_150_712) do
+ActiveRecord::Schema[7.0].define(version: 20_230_329_194_121) do
   create_table 'addresses', force: :cascade do |t|
     t.string 'address_line1'
     t.string 'address_line2'
@@ -339,6 +339,14 @@ ActiveRecord::Schema[7.0].define(version: 20_230_328_150_712) do
     t.index ['marital_status_code'], name: 'index_marital_status_code'
   end
 
+  create_table 'list_opioid_therapy_uses', force: :cascade do |t|
+    t.string 'opioid_therapy_code', null: false
+    t.string 'opioid_therapy'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['opioid_therapy_code'], name: 'index_opioid_therapy_code'
+  end
+
   create_table 'list_races', force: :cascade do |t|
     t.string 'race_code', null: false
     t.string 'race'
@@ -369,6 +377,33 @@ ActiveRecord::Schema[7.0].define(version: 20_230_328_150_712) do
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['smi_sed_code'], name: 'index_smi_sed_code'
+  end
+
+  create_table 'list_substance_names', force: :cascade do |t|
+    t.string 'substance_name_code', null: false
+    t.string 'substance_name'
+    t.string 'detail_substance_name_code'
+    t.string 'detail_substance_name'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['detail_substance_name_code'], name: 'index_detail_substance_name_code'
+    t.index ['substance_name_code'], name: 'index_substance_name_code'
+  end
+
+  create_table 'list_substance_use_frequencies', force: :cascade do |t|
+    t.string 'primary_su_frequency_admission_code', null: false
+    t.string 'primary_su_frequency_admission'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['primary_su_frequency_admission_code'], name: 'index_primary_su_frequency_admission_code'
+  end
+
+  create_table 'list_substance_use_routes', force: :cascade do |t|
+    t.string 'primary_su_route_code', null: false
+    t.string 'primary_su_route'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['primary_su_route_code'], name: 'index_primary_su_route_code'
   end
 
   create_table 'list_treatment_settings', force: :cascade do |t|

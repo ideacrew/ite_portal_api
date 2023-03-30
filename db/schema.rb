@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_329_194_121) do
+ActiveRecord::Schema[7.0].define(version: 20_230_330_180_020) do
   create_table 'addresses', force: :cascade do |t|
     t.string 'address_line1'
     t.string 'address_line2'
@@ -281,6 +281,15 @@ ActiveRecord::Schema[7.0].define(version: 20_230_329_194_121) do
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['criminal_justice_referral_code'], name: 'index_criminal_justice_referral_code'
+  end
+
+  create_table 'list_diagnosis_icd10_codes', force: :cascade do |t|
+    t.string 'diagnosis_code', null: false
+    t.string 'diagnosis_short_description'
+    t.string 'diagnosis_long_description'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['diagnosis_code'], name: 'index_diagnosis_code'
   end
 
   create_table 'list_discharge_reasons', force: :cascade do |t|

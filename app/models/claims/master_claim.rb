@@ -21,5 +21,25 @@ module Claims
       :gender,
       :procedure_code
     )
+
+    def master_client_id
+      registry = Claims::MasterClientRegistry.where(record_source_id: claim_record_id)&.first
+      return unless registry
+
+      registry.master_client_id
+    end
+
+    def client_id
+      return unless master_client_id
+
+      client = Claims::MasterClient.where(master_client_id:)&.first
+      return unless client
+
+      client.id
+    end
+
+    def details
+      attributes.merge(master_client_id:, client_id:)
+    end
   end
 end

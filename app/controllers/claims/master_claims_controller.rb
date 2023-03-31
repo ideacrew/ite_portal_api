@@ -14,10 +14,19 @@ module Claims
       end
     end
 
+    def show
+      @claim = Claims::MasterClaim.find(params[:id])
+      if @claim
+        render json: @claim.details
+      else
+        render json: { status_text: 'Could not find claim', status: 400, content_type: 'application/json' }, status: 400
+      end
+    end
+
     private
 
     def permit_params
-      params.permit(:search)
+      params.permit(:search, :id)
     end
   end
 end

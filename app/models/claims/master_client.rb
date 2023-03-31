@@ -17,5 +17,12 @@ module Claims
       :record_source_date,
       :record_source_id
     )
+
+    def claims
+      registries = Claims::MasterClientRegistry.where(master_client_id:)&.pluck(:record_source_id)
+      return unless registries
+
+      Claims::MasterClaim.where(claim_record_id: registries)
+    end
   end
 end

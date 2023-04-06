@@ -14,6 +14,18 @@ module Claims
       end
     end
 
+    def advanced_search
+      if params['criteria_selector']
+        criteria = get_criteria(params)
+        if criteria.any?
+          @claims = Claims::MasterClaim.where(criteria.join(' AND '))
+          render json: { claim_count: @claims.length, claims: @claims&.map(&:attributes) }
+        end
+      else
+        render json: { status_text: 'No search criteria given', status: 400, content_type: 'application/json' }, status: 400
+      end
+    end
+
     def show
       @claim = Claims::MasterClaim.find(params[:id])
       if @claim
@@ -25,8 +37,42 @@ module Claims
 
     private
 
+    def get_criteria(params)
+      criteria = []
+      params['criteria_selector'].each_key do |key|
+        next unless params.dig('criteria_relative', key) && params.dig('criteria_value', key) && params.dig('criteria_value_type', key)
+
+        selector = params['criteria_selector'][key]
+        relative = params['criteria_relative'][key]
+        value = params['criteria_value'][key]
+        type = params['criteria_value_type'][key]
+
+        if type == 'date_range'
+          date_range_criterion = get_date_range_criteron(selector, relative, value)
+          criteria.push(date_range_criterion)
+        elsif ['LIKE', 'NOT LIKE'].include?(relative)
+          criteria.push("UPPER(#{selector}) #{relative} UPPER('%#{value}%')")
+        else
+          criteria.push("#{selector} #{relative} '#{value}'")
+        end
+      end
+      criteria
+    end
+
+    def get_date_range_criteron(selector, relative, value)
+      selector1 = selector.split('|')[0]
+      selector2 = selector.split('|')[1]
+      if relative == '<>'
+        "#{selector1} <= #{value} AND #{selector2}>= '#{value}'"
+      elsif relative == '<'
+        "#{selector2} < '#{value}'"
+      else
+        "#{selector1} > '#{value}'"
+      end
+    end
+
     def permit_params
-      params.permit(:search, :id)
+      params.permit(:search, :id, criteria_selector: {}, criteria_relative: {}, criteria_value: {}, criteria_value_type: {})
     end
   end
 end

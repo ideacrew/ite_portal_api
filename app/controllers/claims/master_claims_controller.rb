@@ -7,8 +7,8 @@ module Claims
 
     def index
       if params['search']
-        @claims = Claims::MasterClaim.where('claim_tcn LIKE ? OR billing_medicaid_id LIKE ?', "%#{params['search']}%", "%#{params['search']}%").all
-        render json: { claim_count: @claims.length, claims: @claims&.map(&:attributes) }
+        claims = Claims::MasterClaim.where('claim_tcn LIKE ? OR billing_medicaid_id LIKE ?', "%#{params['search']}%", "%#{params['search']}%").all
+        render json: { claim_count: claims.length, claims: claims&.map(&:attributes) }
       else
         render json: { status_text: 'No search param given', status: 400, content_type: 'application/json' }, status: 400
       end
@@ -18,8 +18,10 @@ module Claims
       if params['criteria_selector']
         criteria = get_criteria(params)
         if criteria.any?
-          @claims = Claims::MasterClaim.where(criteria.join(' AND '))
-          render json: { claim_count: @claims.length, claims: @claims&.map(&:attributes) }
+          claims = Claims::MasterClaim.where(criteria.join(' AND ')).order(created_at: :desc)
+          claim_length = claims.size
+          claims = claims.offset(params[:offset]).limit(20)
+          render json: { claim_count: claim_length, claims: claims&.map(&:attributes) }
         end
       else
         render json: { status_text: 'No search criteria given', status: 400, content_type: 'application/json' }, status: 400
@@ -62,8 +64,8 @@ module Claims
     def get_date_range_criteron(selector, relative, value)
       selector1 = selector.split('|')[0]
       selector2 = selector.split('|')[1]
-      if relative == '<>'
-        "#{selector1} <= #{value} AND #{selector2}>= '#{value}'"
+      if relative == '><'
+        "#{selector1} <= '#{value}' AND #{selector2} >= '#{value}'"
       elsif relative == '<'
         "#{selector2} < '#{value}'"
       else
@@ -72,7 +74,7 @@ module Claims
     end
 
     def permit_params
-      params.permit(:search, :id, criteria_selector: {}, criteria_relative: {}, criteria_value: {}, criteria_value_type: {})
+      params.permit(:search, :id, :offset, criteria_selector: {}, criteria_relative: {}, criteria_value: {}, criteria_value_type: {})
     end
   end
 end

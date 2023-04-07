@@ -66,10 +66,10 @@ module Claims
       selector2 = selector.split('|')[1]
       if relative == '><'
         "#{selector1} <= '#{value}' AND #{selector2} >= '#{value}'"
-      elsif relative == '<'
-        "#{selector2} < '#{value}'"
+      elsif relative == '>'
+        "#{selector2} > '#{value}'"
       else
-        "#{selector1} > '#{value}'"
+        "#{selector1} < '#{value}'"
       end
     end
 

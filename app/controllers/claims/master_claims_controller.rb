@@ -8,9 +8,29 @@ module Claims
     def index
       if params['search']
         claims = Claims::MasterClaim.where('claim_tcn LIKE ? OR billing_medicaid_id LIKE ?', "%#{params['search']}%", "%#{params['search']}%").all
-        render json: { claim_count: claims.length, claims: claims&.map(&:attributes) }
+        claim_length = claims.size
+        claims = claims.offset(params[:offset]).limit(20)
+        render json: { claim_count: claim_length, claims: claims&.map(&:attributes) }
       else
         render json: { status_text: 'No search param given', status: 400, content_type: 'application/json' }, status: 400
+      end
+    end
+
+    def procedure_codes
+      codes = Claims::Procedure.all&.map(&:filter_options_format)
+      if codes
+        render json: codes
+      else
+        ender json: { status_text: 'No procedure codes found', status: 400, content_type: 'application/json' }, status: 400
+      end
+    end
+
+    def provider_types
+      types = Claims::ProviderType.all.map(&:filter_options_format)
+      if types
+        render json: types
+      else
+        ender json: { status_text: 'No provider types found', status: 400, content_type: 'application/json' }, status: 400
       end
     end
 

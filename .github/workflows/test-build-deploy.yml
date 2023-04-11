@@ -113,8 +113,8 @@ jobs:
           aws-region: us-east-1
       - name: Deploy Image on Fargate
         run: |
-          aws ecs update-service --cluster "dbh-ite" --service "dbhiteportal-dev-bff" --force-new-deployment
+          aws ecs update-service --cluster "dbh-ite" --service "dbhiteportal-api-dev-2" --force-new-deployment
       - name: Wait For Deployment To Complete
         run: |
           sleep 15
-          aws ecs wait services-stable --cluster "dbh-ite" --services "dbhiteportal-dev-bff"
+          aws ecs wait services-stable --cluster "dbh-ite" --services "dbhiteportal-api-dev-2"

@@ -9,5 +9,12 @@ module Claims
       :procedure_code,
       :procedure_description
     )
+
+    def filter_options_format
+      {
+        value: procedure_code,
+        display: procedure_code
+      }
+    end
   end
 end

@@ -5,7 +5,6 @@ require 'rails_helper'
 RSpec.describe ProviderGateway::Api::ClinicalProfile, type: :model, dbclean: :around_each do
   let(:clinical_profile_params) do
     {
-      clinical_id: 'test',
       episode_key: 'test',
       provider_id: 'test',
       client_id: 'test',
@@ -25,12 +24,6 @@ RSpec.describe ProviderGateway::Api::ClinicalProfile, type: :model, dbclean: :ar
 
   context 'with a invalid params' do
     context 'will not create an clinical_profile object' do
-      it 'without a clinical_id' do
-        clinical_profile_params[:clinical_id] = nil
-        clinical_profile = described_class.new(clinical_profile_params)
-        expect(clinical_profile.save).to eq false
-      end
-
       it 'without a episode_key' do
         clinical_profile_params[:episode_key] = nil
         clinical_profile = described_class.new(clinical_profile_params)

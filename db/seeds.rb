@@ -464,7 +464,7 @@ ListLookups::ListTreatmentSetting.create([
 
 ListLookups::ListCollateralStatus.create([
   { collateral_status_code: '1', collateral_status: 'Codependent/Collateral' },
-  { collateral_status_code: '1', collateral_status: 'Client' }
+  { collateral_status_code: '2', collateral_status: 'Client' }
 ])
 
 ListLookups::ListGender.create([

@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_330_180_020) do
+ActiveRecord::Schema[7.0].define(version: 20_230_411_195_554) do
   create_table 'addresses', force: :cascade do |t|
     t.string 'address_line1'
     t.string 'address_line2'
@@ -31,10 +31,12 @@ ActiveRecord::Schema[7.0].define(version: 20_230_330_180_020) do
     t.string 'episode_key'
     t.string 'client_key'
     t.string 'assessment_type'
-    t.decimal 'cafas_or_pecfas_total_score', precision: 18
     t.date 'cafas_or_pecfas_assessment_date'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.float 'cafas_or_pecfas_total_score'
+    t.bigint 'episode_id'
+    t.index ['episode_id'], name: 'index_cafas_pecfases_on_episode_id'
   end
 
   create_table 'claim_addresses', force: :cascade do |t|
@@ -72,7 +74,6 @@ ActiveRecord::Schema[7.0].define(version: 20_230_330_180_020) do
   end
 
   create_table 'client_profiles', force: :cascade do |t|
-    t.string 'social_id'
     t.string 'client_key'
     t.string 'living_arrangement'
     t.string 'marital_status'
@@ -107,7 +108,6 @@ ActiveRecord::Schema[7.0].define(version: 20_230_330_180_020) do
     t.string 'primary_language'
     t.string 'client_key'
     t.date 'effective_start_date'
-    t.date 'effective_update_date'
     t.bigint 'provider_id'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
@@ -116,7 +116,6 @@ ActiveRecord::Schema[7.0].define(version: 20_230_330_180_020) do
   end
 
   create_table 'clinical_profiles', force: :cascade do |t|
-    t.string 'clinical_id'
     t.string 'episode_key'
     t.string 'provider_id'
     t.string 'client_id'
@@ -158,15 +157,19 @@ ActiveRecord::Schema[7.0].define(version: 20_230_330_180_020) do
     t.date 'diagnosis_removal_date'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.bigint 'episode_id'
+    t.index ['episode_id'], name: 'index_diagnoses_on_episode_id'
   end
 
   create_table 'dla20s', force: :cascade do |t|
     t.string 'episode_key'
     t.string 'client_key'
-    t.decimal 'dla_average_score', precision: 18
     t.date 'dla_assessment_date'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.float 'dla_average_score'
+    t.bigint 'episode_id'
+    t.index ['episode_id'], name: 'index_dla20s_on_episode_id'
   end
 
   create_table 'dw_medicaid_claims', force: :cascade do |t|
@@ -231,7 +234,6 @@ ActiveRecord::Schema[7.0].define(version: 20_230_330_180_020) do
   create_table 'episodes', force: :cascade do |t|
     t.string 'episode_key'
     t.string 'provider_id'
-    t.date 'effective_start_date'
     t.date 'effective_update_date'
     t.string 'collateral'
     t.string 'record_type'
@@ -769,11 +771,9 @@ ActiveRecord::Schema[7.0].define(version: 20_230_330_180_020) do
     t.string 'client_key'
     t.string 'substance_code'
     t.string 'substance_name'
-    t.string 'substance_order'
     t.string 'detailed_drug_code'
     t.integer 'age_at_first_use'
     t.string 'substance_use_route_code'
-    t.integer 'substance_use_route'
     t.string 'substance_use_frequency_at_admission_code'
     t.string 'substance_use_frequency_at_admission'
     t.string 'substance_use_frequency_at_discharge_code'
@@ -782,11 +782,19 @@ ActiveRecord::Schema[7.0].define(version: 20_230_330_180_020) do
     t.date 'substance_info_removal_date'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.integer 'substance_order'
+    t.string 'substance_use_route'
+    t.bigint 'episode_id'
+    t.index ['episode_id'], name: 'index_substance_uses_on_episode_id'
   end
 
   add_foreign_key 'addresses', 'clients', column: 'clients_id'
+  add_foreign_key 'cafas_pecfases', 'episodes'
   add_foreign_key 'claim_addresses', 'master_clients'
   add_foreign_key 'claim_medicaid_ids', 'master_clients'
   add_foreign_key 'claim_phone_numbers', 'master_clients'
+  add_foreign_key 'diagnoses', 'episodes'
+  add_foreign_key 'dla20s', 'episodes'
   add_foreign_key 'phones', 'clients', column: 'clients_id'
+  add_foreign_key 'substance_uses', 'episodes'
 end

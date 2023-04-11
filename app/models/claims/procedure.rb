@@ -13,7 +13,7 @@ module Claims
     def filter_options_format
       {
         value: procedure_code,
-        display: procedure_description
+        display: procedure_code
       }
     end
   end

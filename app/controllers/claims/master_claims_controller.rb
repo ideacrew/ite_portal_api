@@ -17,7 +17,7 @@ module Claims
     end
 
     def procedure_codes
-      codes = Claims::Procedure.all&.map(&:filter_options_format)
+      codes = Claims::Procedure.all&.order(procedure_code: :asc)&.map(&:filter_options_format)&.uniq
       if codes
         render json: codes
       else
@@ -26,7 +26,7 @@ module Claims
     end
 
     def provider_types
-      types = Claims::ProviderType.all.map(&:filter_options_format)
+      types = Claims::ProviderType.all&.order(provider_type_code: :asc)&.map(&:filter_options_format)&.uniq
       if types
         render json: types
       else

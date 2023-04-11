@@ -13,7 +13,7 @@ module Claims
     def filter_options_format
       {
         value: provider_type_code,
-        display: provider_type_description
+        display: provider_type_code
       }
     end
   end

@@ -17,6 +17,7 @@ RSpec.describe ProviderGateway::Api::Diagnosis, type: :model, dbclean: :around_e
   context 'with a valid diagnosis' do
     context 'all values filled in' do
       it 'will create an diagnosis object' do
+        ::ProviderGateway::Api::Episode.create(episode_key: 'test')
         diagnosis = described_class.new(diagnosis_params)
         expect(diagnosis.save).to eq true
         expect(diagnosis.class).to eq(described_class)

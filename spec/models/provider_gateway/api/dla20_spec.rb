@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe ProviderGateway::Api::Dla20, type: :model, dbclean: :around_each do
   let(:dla20_params) do
     {
-      episode_key: 'test',
+      episode_key: 'episode_test',
       client_key: 'test',
       dla_average_score: '3.00'
     }
@@ -14,6 +14,7 @@ RSpec.describe ProviderGateway::Api::Dla20, type: :model, dbclean: :around_each 
   context 'with a valid dla20' do
     context 'all values filled in' do
       it 'will create an dla20 object' do
+        ::ProviderGateway::Api::Episode.create(episode_key: 'episode_test')
         dla20 = described_class.new(dla20_params)
         expect(dla20.save).to eq true
         expect(dla20.class).to eq(described_class)

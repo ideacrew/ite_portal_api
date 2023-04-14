@@ -6,7 +6,7 @@ RSpec.describe ProviderGateway::Api::SubstanceUse, type: :model, dbclean: :aroun
   let(:substance_use_params) do
     {
       client_key: 'test',
-      episode_key: 'test',
+      episode_key: 'test_key',
       substance_code: '123'
     }
   end
@@ -14,6 +14,7 @@ RSpec.describe ProviderGateway::Api::SubstanceUse, type: :model, dbclean: :aroun
   context 'with a valid substance_use' do
     context 'all values filled in' do
       it 'will create an substance_use object' do
+        ::ProviderGateway::Api::Episode.create(episode_key: 'test_key')
         substance_use = described_class.new(substance_use_params)
         expect(substance_use.save).to eq true
         expect(substance_use.class).to eq(described_class)

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe ProviderGateway::Api::CafasPecfas, type: :model, dbclean: :around_each do
+RSpec.describe ProviderGateway::Api::CafasPecfas, type: :model, dbclean: :after_each do
   let(:cafas_pecfas_params) do
     {
       episode_key: 'episode_key',
@@ -14,6 +14,7 @@ RSpec.describe ProviderGateway::Api::CafasPecfas, type: :model, dbclean: :around
   context 'with a valid cafas_pecfas' do
     context 'all values filled in' do
       it 'will create an cafas_pecfas object' do
+        ::ProviderGateway::Api::Episode.create(episode_key: 'episode_key')
         cafas_pecfas = described_class.new(cafas_pecfas_params)
         expect(cafas_pecfas.save).to eq true
         expect(cafas_pecfas.class).to eq(described_class)

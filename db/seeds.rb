@@ -648,7 +648,7 @@ ListLookups::ListHealthInsurance.create([
 ])
 
 ListLookups::ListSelfHelpGroupAttendanceFrequency.create([
-  { self_help_group_admission_code: '1', self_help_group_admission: 'Not Attendance' },
+  { self_help_group_admission_code: '1', self_help_group_admission: 'No Attendance' },
   { self_help_group_admission_code: '2', self_help_group_admission: 'Less than once a week' },
   { self_help_group_admission_code: '3', self_help_group_admission: 'About once a week' },
   { self_help_group_admission_code: '4', self_help_group_admission: '2-3 times per week' },

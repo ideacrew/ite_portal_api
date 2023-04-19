@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_413_191_903) do
+ActiveRecord::Schema[7.0].define(version: 20_230_419_224_141) do
   create_table 'addresses', force: :cascade do |t|
     t.string 'address_line1'
     t.string 'address_line2'
@@ -25,6 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_413_191_903) do
     t.datetime 'updated_at', null: false
     t.bigint 'clients_id'
     t.string 'provider_gateway_id'
+    t.string 'client_key'
     t.index ['clients_id'], name: 'index_addresses_on_clients_id'
   end
 
@@ -36,9 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_413_191_903) do
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.float 'cafas_or_pecfas_total_score'
-    t.bigint 'episode_id'
     t.string 'provider_gateway_id'
-    t.index ['episode_id'], name: 'index_cafas_pecfases_on_episode_id'
   end
 
   create_table 'claim_addresses', force: :cascade do |t|
@@ -126,11 +125,9 @@ ActiveRecord::Schema[7.0].define(version: 20_230_413_191_903) do
     t.date 'effective_start_date'
     t.string 'smi_sed'
     t.string 'co_occurring_sud_mh'
-    t.bigint 'episode_id'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.string 'provider_gateway_id'
-    t.index ['episode_id'], name: 'index_clinical_profiles_on_episode_id'
   end
 
   create_table 'denial_reasons', force: :cascade do |t|
@@ -162,9 +159,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_413_191_903) do
     t.date 'diagnosis_removal_date'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.bigint 'episode_id'
     t.string 'provider_gateway_id'
-    t.index ['episode_id'], name: 'index_diagnoses_on_episode_id'
   end
 
   create_table 'dla20s', force: :cascade do |t|
@@ -174,9 +169,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_413_191_903) do
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.float 'dla_average_score'
-    t.bigint 'episode_id'
     t.string 'provider_gateway_id'
-    t.index ['episode_id'], name: 'index_dla20s_on_episode_id'
   end
 
   create_table 'dw_medicaid_claims', force: :cascade do |t|
@@ -794,20 +787,15 @@ ActiveRecord::Schema[7.0].define(version: 20_230_413_191_903) do
     t.datetime 'updated_at', null: false
     t.integer 'substance_order'
     t.string 'substance_use_route'
-    t.bigint 'episode_id'
     t.string 'provider_gateway_id'
-    t.index ['episode_id'], name: 'index_substance_uses_on_episode_id'
-  end
-
-  create_table 'users', force: :cascade do |t|
-    t.string 'email'
   end
 
   add_foreign_key 'addresses', 'clients', column: 'clients_id'
-  add_foreign_key 'cafas_pecfases', 'episodes'
+  add_foreign_key 'cafas_pecfases', 'episodes', column: 'episode_key', primary_key: 'episode_key'
   add_foreign_key 'claim_addresses', 'master_clients'
   add_foreign_key 'claim_medicaid_ids', 'master_clients'
   add_foreign_key 'claim_phone_numbers', 'master_clients'
+  add_foreign_key 'clinical_profiles', 'episodes', column: 'episode_key', primary_key: 'episode_key'
   add_foreign_key 'diagnoses', 'episodes', column: 'episode_key', primary_key: 'episode_key'
   add_foreign_key 'dla20s', 'episodes', column: 'episode_key', primary_key: 'episode_key'
   add_foreign_key 'phones', 'clients', column: 'clients_id'

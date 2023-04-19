@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe ProviderGateway::Api::ClinicalProfile, type: :model, dbclean: :around_each do
   let(:clinical_profile_params) do
     {
-      episode_key: 'test',
+      episode_key: 'clincial_test',
       provider_id: 'test',
       client_id: 'test',
       smi_sed: '4'
@@ -15,6 +15,7 @@ RSpec.describe ProviderGateway::Api::ClinicalProfile, type: :model, dbclean: :ar
   context 'with a valid clinical_profile' do
     context 'all values filled in' do
       it 'will create an clinical_profile object' do
+        ::ProviderGateway::Api::Episode.create(episode_key: 'clincial_test')
         clinical_profile = described_class.new(clinical_profile_params)
         expect(clinical_profile.save).to eq true
         expect(clinical_profile.class).to eq(described_class)

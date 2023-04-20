@@ -350,9 +350,6 @@ ListLookups::ListEthnicity.create([
   { ethnicity_code: '5', ethnicity: 'Not of Hispanic or Latino origin' },
   { ethnicity_code: '6', ethnicity: 'Hispanic or Latino, Not Specified' },
   { ethnicity_code: '97', ethnicity: 'Unknown' },
-  { ethnicity_code: '98', ethnicity: 'Not Collected' },
-  { ethnicity_code: '23', ethnicity: 'Native Hawaiian or Other Pacific Islander' },
-  { ethnicity_code: '97', ethnicity: 'Unknown' },
   { ethnicity_code: '98', ethnicity: 'Not Collected' }
 ])
 

@@ -4,8 +4,10 @@ module Claims
   # controller actions for the master clients model
   class MasterClientsController < ApplicationController
     before_action :permit_params
+    before_action :authenticate_user!
 
     def index
+      user_signed_in?
       if params['search']
         @clients = Claims::MasterClient.where('full_name LIKE ?', "%#{params['search']}%").all
         render json: { client_count: @clients.length, clients: @clients&.map(&:attributes) }

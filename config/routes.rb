@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 ItePortalApi::Application.routes.draw do
+  devise_for :users
   namespace :claims do
     resources :master_claims, only: %i[index show] do
       collection do

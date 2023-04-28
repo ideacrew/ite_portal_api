@@ -4,6 +4,7 @@ module Claims
   # controller actions for the master claims model
   class MasterClaimsController < ApplicationController
     before_action :permit_params
+    before_action :authenticate_user!
 
     def index
       if params['search']

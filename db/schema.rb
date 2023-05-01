@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_419_224_141) do
+ActiveRecord::Schema[7.0].define(version: 20_230_501_174_120) do
   create_table 'addresses', force: :cascade do |t|
     t.string 'address_line1'
     t.string 'address_line2'
@@ -178,7 +178,6 @@ ActiveRecord::Schema[7.0].define(version: 20_230_419_224_141) do
     t.string 'dw_adjudication_status', null: false
     t.string 'dw_admitting_diagnosis'
     t.string 'dw_admitting_diagnosis_code'
-    t.decimal 'dw_billed_amount', precision: 18
     t.date 'dw_billing_date', null: false
     t.string 'dw_billing_medicaid_id'
     t.string 'dw_billing_provider'
@@ -206,10 +205,8 @@ ActiveRecord::Schema[7.0].define(version: 20_230_419_224_141) do
     t.string 'dw_header_diagnosis_group_key'
     t.date 'dw_last_date_of_service'
     t.string 'dw_last_name'
-    t.decimal 'dw_mco_encounter_paid_amount', precision: 18
     t.string 'dw_modifier'
     t.string 'dw_other_diagnosis_code'
-    t.decimal 'dw_paid_amount', precision: 18
     t.integer 'dw_paid_units'
     t.string 'dw_phone_number'
     t.string 'dw_place_of_service'
@@ -228,6 +225,9 @@ ActiveRecord::Schema[7.0].define(version: 20_230_419_224_141) do
     t.string 'dw_ward_code'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.decimal 'dw_mco_encounter_paid_amount', precision: 10, scale: 2
+    t.decimal 'dw_billed_amount', precision: 10, scale: 2
+    t.decimal 'dw_paid_amount', precision: 10, scale: 2
     t.index ['dw_claim_id'], name: 'index_dw_claim_id'
   end
 
@@ -520,22 +520,17 @@ ActiveRecord::Schema[7.0].define(version: 20_230_419_224_141) do
     t.bigint 'master_claim_id', null: false
     t.string 'claim_record_id', null: false
     t.date 'adjudication_date', null: false
-    t.string 'adjudication_status'
     t.string 'admitting_diagnosis'
     t.string 'admitting_diagnosis_code'
     t.integer 'age_as_of_first_date_of_service'
-    t.decimal 'billed_amount', precision: 18
     t.date 'billing_date', null: false
-    t.bigint 'billing_medicaid_id'
     t.bigint 'billing_patient_account'
     t.string 'billing_provider'
-    t.bigint 'billing_provider_id', null: false
     t.string 'billing_provider_npi'
     t.string 'billing_provider_taxonomy'
     t.string 'billing_provider_type'
     t.string 'billing_provider_type_code', null: false
     t.string 'claim_coverage_type', null: false
-    t.string 'claim_information_source'
     t.string 'claim_process_level'
     t.string 'claim_processing_status'
     t.string 'claim_tcn', limit: 17
@@ -556,12 +551,10 @@ ActiveRecord::Schema[7.0].define(version: 20_230_419_224_141) do
     t.bigint 'header_diagnosis_group_key'
     t.date 'last_date_of_service'
     t.string 'last_name'
-    t.decimal 'mco_encounter_paid_amount', precision: 18
     t.string 'middle_name'
     t.string 'modifier'
     t.string 'original_tcn_of_adjusted_claim', limit: 17
     t.string 'other_diagnosis_code'
-    t.decimal 'paid_amount', precision: 18
     t.integer 'paid_units'
     t.string 'phone_number'
     t.string 'place_of_service'
@@ -580,7 +573,13 @@ ActiveRecord::Schema[7.0].define(version: 20_230_419_224_141) do
     t.integer 'ward_code'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.index ['billing_medicaid_id'], name: 'index_master_claims_on_billing_medicaid_id'
+    t.string 'adjudication_status', null: false
+    t.string 'claim_information_source', null: false
+    t.decimal 'billed_amount', precision: 10, scale: 2
+    t.decimal 'mco_encounter_paid_amount', precision: 10, scale: 2
+    t.decimal 'paid_amount', precision: 10, scale: 2
+    t.integer 'billing_medicaid_id'
+    t.integer 'billing_provider_id', null: false
     t.index ['claim_record_id'], name: 'index_claim_record_id'
     t.index ['claim_tcn'], name: 'index_master_claims_on_claim_tcn'
     t.index ['master_claim_id'], name: 'index_master_claim_id'
@@ -589,9 +588,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_419_224_141) do
   create_table 'master_client_registries', force: :cascade do |t|
     t.bigint 'master_client_registry_id', null: false
     t.string 'master_client_id', null: false
-    t.bigint 'billing_medicaid_id'
     t.bigint 'billing_patient_account'
-    t.bigint 'billing_provider_id'
     t.date 'date_of_birth', null: false
     t.string 'first_name'
     t.text 'full_address'
@@ -606,6 +603,8 @@ ActiveRecord::Schema[7.0].define(version: 20_230_419_224_141) do
     t.date 'record_source_date', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.integer 'billing_medicaid_id'
+    t.integer 'billing_provider_id'
     t.index ['master_client_id'], name: 'index_master_client_id'
     t.index ['master_client_registry_id'], name: 'index_master_client_registry_id'
   end
@@ -673,7 +672,6 @@ ActiveRecord::Schema[7.0].define(version: 20_230_419_224_141) do
     t.string 'mmis_claim_id', null: false
     t.string 'mmis_adjudication_date', null: false
     t.string 'mmis_adjudication_status', null: false
-    t.decimal 'mmis_billed_amount', precision: 18
     t.date 'mmis_billing_date', null: false
     t.string 'mmis_billing_medicaid_id'
     t.string 'mmis_billing_patient_account'
@@ -701,7 +699,6 @@ ActiveRecord::Schema[7.0].define(version: 20_230_419_224_141) do
     t.string 'mmis_middle_name'
     t.string 'mmis_modifier'
     t.string 'mmis_original_tcn_of_adjusted_claim', limit: 17
-    t.decimal 'mmis_paid_amount', precision: 18
     t.integer 'mmis_paid_units'
     t.string 'mmis_place_of_service'
     t.string 'mmis_place_of_service_code'
@@ -714,6 +711,8 @@ ActiveRecord::Schema[7.0].define(version: 20_230_419_224_141) do
     t.string 'mmis_tcn_line_item_number'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.decimal 'mmis_billed_amount', precision: 10, scale: 2
+    t.decimal 'mmis_paid_amount', precision: 10, scale: 2
     t.index ['mmis_claim_id'], name: 'index_mmis_claim_id'
   end
 

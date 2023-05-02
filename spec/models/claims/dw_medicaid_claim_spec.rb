@@ -5,7 +5,6 @@ require 'rails_helper'
 RSpec.describe Claims::DwMedicaidClaim, type: :model, dbclean: :around_each do
   let(:model_params) do
     {
-      dw_claim_id: '3',
       dw_adjudication_date: '2022-01-31',
       dw_adjudication_status: 'PAID',
       dw_admitting_diagnosis: 'Unknown',

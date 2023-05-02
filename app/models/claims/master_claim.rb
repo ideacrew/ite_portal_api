@@ -6,7 +6,6 @@ module Claims
     self.table_name = 'master_claims'
 
     validates_presence_of(
-      :master_claim_id,
       :claim_record_id,
       :adjudication_date,
       :adjudication_status,

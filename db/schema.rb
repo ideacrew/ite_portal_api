@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_502_155_553) do
+ActiveRecord::Schema[7.0].define(version: 20_230_502_162_816) do
   create_table 'addresses', force: :cascade do |t|
     t.string 'address_line1'
     t.string 'address_line2'
@@ -173,7 +173,6 @@ ActiveRecord::Schema[7.0].define(version: 20_230_502_155_553) do
   end
 
   create_table 'dw_medicaid_claims', force: :cascade do |t|
-    t.string 'dw_claim_id', null: false
     t.string 'dw_adjudication_date', null: false
     t.string 'dw_adjudication_status', null: false
     t.string 'dw_admitting_diagnosis'
@@ -228,7 +227,6 @@ ActiveRecord::Schema[7.0].define(version: 20_230_502_155_553) do
     t.decimal 'dw_mco_encounter_paid_amount', precision: 10, scale: 2
     t.decimal 'dw_billed_amount', precision: 10, scale: 2
     t.decimal 'dw_paid_amount', precision: 10, scale: 2
-    t.index ['dw_claim_id'], name: 'index_dw_claim_id'
   end
 
   create_table 'episodes', force: :cascade do |t|
@@ -517,7 +515,6 @@ ActiveRecord::Schema[7.0].define(version: 20_230_502_155_553) do
   end
 
   create_table 'master_claims', force: :cascade do |t|
-    t.bigint 'master_claim_id', null: false
     t.string 'claim_record_id', null: false
     t.date 'adjudication_date', null: false
     t.string 'admitting_diagnosis'
@@ -582,7 +579,6 @@ ActiveRecord::Schema[7.0].define(version: 20_230_502_155_553) do
     t.integer 'billing_provider_id', null: false
     t.index ['claim_record_id'], name: 'index_claim_record_id'
     t.index ['claim_tcn'], name: 'index_master_claims_on_claim_tcn'
-    t.index ['master_claim_id'], name: 'index_master_claim_id'
   end
 
   create_table 'master_client_registries', force: :cascade do |t|
@@ -669,7 +665,6 @@ ActiveRecord::Schema[7.0].define(version: 20_230_502_155_553) do
   end
 
   create_table 'mmis_medicaid_claims', force: :cascade do |t|
-    t.string 'mmis_claim_id', null: false
     t.string 'mmis_adjudication_date', null: false
     t.string 'mmis_adjudication_status', null: false
     t.date 'mmis_billing_date', null: false
@@ -713,7 +708,6 @@ ActiveRecord::Schema[7.0].define(version: 20_230_502_155_553) do
     t.datetime 'updated_at', null: false
     t.decimal 'mmis_billed_amount', precision: 10, scale: 2
     t.decimal 'mmis_paid_amount', precision: 10, scale: 2
-    t.index ['mmis_claim_id'], name: 'index_mmis_claim_id'
   end
 
   create_table 'phones', force: :cascade do |t|

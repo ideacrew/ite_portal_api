@@ -5,7 +5,6 @@ require 'rails_helper'
 RSpec.describe Claims::MasterClaim, type: :model, dbclean: :around_each do
   let(:master_claim_params) do
     {
-      master_claim_id: '1',
       claim_record_id: '21337382200155227-01',
       adjudication_date: '2022-01-31',
       adjudication_status: 'PAID',
@@ -83,12 +82,6 @@ RSpec.describe Claims::MasterClaim, type: :model, dbclean: :around_each do
 
   context 'with a invalid params' do
     context 'will not create an master_claim object' do
-      it 'without a master_claim_id' do
-        master_claim_params[:master_claim_id] = nil
-        master_claim = described_class.new(master_claim_params)
-        expect(master_claim.save).to eq false
-      end
-
       it 'without a claim_record_id' do
         master_claim_params[:claim_record_id] = nil
         master_claim = described_class.new(master_claim_params)

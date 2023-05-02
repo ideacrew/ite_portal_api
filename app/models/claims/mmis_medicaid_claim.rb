@@ -6,7 +6,6 @@ module Claims
     self.table_name = 'mmis_medicaid_claims'
 
     validates_presence_of(
-      :mmis_claim_id,
       :mmis_adjudication_date,
       :mmis_adjudication_status,
       :mmis_billing_date,

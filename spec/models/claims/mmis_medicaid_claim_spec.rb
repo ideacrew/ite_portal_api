@@ -5,7 +5,6 @@ require 'rails_helper'
 RSpec.describe Claims::MmisMedicaidClaim, type: :model, dbclean: :around_each do
   let(:model_params) do
     {
-      mmis_claim_id: '1',
       mmis_adjudication_date: '2022-01-31',
       mmis_adjudication_status: 'DENIED',
       mmis_billed_amount: '194.16',

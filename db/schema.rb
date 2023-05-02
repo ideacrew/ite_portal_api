@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_501_174_120) do
+ActiveRecord::Schema[7.0].define(version: 20_230_502_155_553) do
   create_table 'addresses', force: :cascade do |t|
     t.string 'address_line1'
     t.string 'address_line2'
@@ -215,7 +215,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_501_174_120) do
     t.string 'dw_primary_diagnosis'
     t.string 'dw_primary_diagnosis_code'
     t.string 'dw_procedure'
-    t.string 'dw_procedure_code', null: false
+    t.string 'dw_procedure_code'
     t.string 'dw_race'
     t.string 'dw_remittance_number'
     t.string 'dw_revenue_code'
@@ -545,7 +545,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_501_174_120) do
     t.string 'emergency_diagnosis_code'
     t.date 'first_date_of_service', null: false
     t.string 'first_name'
-    t.text 'full_address', null: false
+    t.text 'full_address'
     t.string 'full_name'
     t.string 'gender', null: false
     t.bigint 'header_diagnosis_group_key'
@@ -563,7 +563,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_501_174_120) do
     t.string 'primary_diagnosis'
     t.string 'primary_diagnosis_code'
     t.string 'procedure'
-    t.string 'procedure_code', null: false
+    t.string 'procedure_code'
     t.string 'race'
     t.bigint 'remittance_number'
     t.string 'revenue_code'
@@ -705,7 +705,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_501_174_120) do
     t.string 'mmis_pre_authorization_number'
     t.string 'mmis_primary_diagnosis_code'
     t.string 'mmis_procedure'
-    t.string 'mmis_procedure_code', null: false
+    t.string 'mmis_procedure_code'
     t.string 'mmis_remittance_number'
     t.integer 'mmis_submitted_units'
     t.string 'mmis_tcn_line_item_number'

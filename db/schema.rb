@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_503_171_812) do
+ActiveRecord::Schema[7.0].define(version: 20_230_503_173_812) do
   create_table 'addresses', force: :cascade do |t|
     t.string 'address_line1'
     t.string 'address_line2'
@@ -174,13 +174,13 @@ ActiveRecord::Schema[7.0].define(version: 20_230_503_171_812) do
 
   create_table 'dw_medicaid_claims', force: :cascade do |t|
     t.string 'dw_adjudication_date', null: false
-    t.string 'dw_adjudication_status', null: false
+    t.string 'dw_adjudication_status'
     t.string 'dw_admitting_diagnosis'
     t.string 'dw_admitting_diagnosis_code'
     t.date 'dw_billing_date', null: false
-    t.string 'dw_billing_medicaid_id'
+    t.integer 'dw_billing_medicaid_id'
     t.string 'dw_billing_provider'
-    t.string 'dw_billing_provider_id', null: false
+    t.integer 'dw_billing_provider_id'
     t.string 'dw_billing_provider_npi'
     t.string 'dw_billing_provider_type'
     t.string 'dw_billing_provider_type_code', null: false
@@ -570,13 +570,13 @@ ActiveRecord::Schema[7.0].define(version: 20_230_503_171_812) do
     t.integer 'ward_code'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.string 'adjudication_status', null: false
-    t.string 'claim_information_source', null: false
+    t.string 'adjudication_status'
+    t.string 'claim_information_source'
     t.decimal 'billed_amount', precision: 18, scale: 2
     t.decimal 'mco_encounter_paid_amount', precision: 18, scale: 2
     t.decimal 'paid_amount', precision: 18, scale: 2
     t.integer 'billing_medicaid_id'
-    t.integer 'billing_provider_id', null: false
+    t.integer 'billing_provider_id'
     t.index ['claim_record_id'], name: 'index_claim_record_id'
     t.index ['claim_tcn'], name: 'index_master_claims_on_claim_tcn'
   end
@@ -666,12 +666,12 @@ ActiveRecord::Schema[7.0].define(version: 20_230_503_171_812) do
 
   create_table 'mmis_medicaid_claims', force: :cascade do |t|
     t.string 'mmis_adjudication_date', null: false
-    t.string 'mmis_adjudication_status', null: false
+    t.string 'mmis_adjudication_status'
     t.date 'mmis_billing_date', null: false
-    t.string 'mmis_billing_medicaid_id'
+    t.integer 'mmis_billing_medicaid_id'
     t.string 'mmis_billing_patient_account'
     t.string 'mmis_billing_provider'
-    t.string 'mmis_billing_provider_id', null: false
+    t.integer 'mmis_billing_provider_id'
     t.string 'mmis_billing_provider_npi'
     t.string 'mmis_billing_provider_taxonomy'
     t.string 'mmis_billing_provider_type'

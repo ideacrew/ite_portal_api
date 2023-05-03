@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_502_162_816) do
+ActiveRecord::Schema[7.0].define(version: 20_230_503_171_812) do
   create_table 'addresses', force: :cascade do |t|
     t.string 'address_line1'
     t.string 'address_line2'
@@ -224,9 +224,9 @@ ActiveRecord::Schema[7.0].define(version: 20_230_502_162_816) do
     t.string 'dw_ward_code'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.decimal 'dw_mco_encounter_paid_amount', precision: 10, scale: 2
-    t.decimal 'dw_billed_amount', precision: 10, scale: 2
-    t.decimal 'dw_paid_amount', precision: 10, scale: 2
+    t.decimal 'dw_mco_encounter_paid_amount', precision: 18, scale: 2
+    t.decimal 'dw_billed_amount', precision: 18, scale: 2
+    t.decimal 'dw_paid_amount', precision: 18, scale: 2
   end
 
   create_table 'episodes', force: :cascade do |t|
@@ -572,9 +572,9 @@ ActiveRecord::Schema[7.0].define(version: 20_230_502_162_816) do
     t.datetime 'updated_at', null: false
     t.string 'adjudication_status', null: false
     t.string 'claim_information_source', null: false
-    t.decimal 'billed_amount', precision: 10, scale: 2
-    t.decimal 'mco_encounter_paid_amount', precision: 10, scale: 2
-    t.decimal 'paid_amount', precision: 10, scale: 2
+    t.decimal 'billed_amount', precision: 18, scale: 2
+    t.decimal 'mco_encounter_paid_amount', precision: 18, scale: 2
+    t.decimal 'paid_amount', precision: 18, scale: 2
     t.integer 'billing_medicaid_id'
     t.integer 'billing_provider_id', null: false
     t.index ['claim_record_id'], name: 'index_claim_record_id'
@@ -706,8 +706,8 @@ ActiveRecord::Schema[7.0].define(version: 20_230_502_162_816) do
     t.string 'mmis_tcn_line_item_number'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.decimal 'mmis_billed_amount', precision: 10, scale: 2
-    t.decimal 'mmis_paid_amount', precision: 10, scale: 2
+    t.decimal 'mmis_billed_amount', precision: 18, scale: 2
+    t.decimal 'mmis_paid_amount', precision: 18, scale: 2
   end
 
   create_table 'phones', force: :cascade do |t|

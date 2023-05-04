@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'puma', '~> 5.0'
 
 # authentication
+gem 'jwt'
 gem 'pundit', '~> 2.2'
 
 # xml parsing

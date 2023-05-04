@@ -7,7 +7,6 @@ module Claims
     belongs_to :master_clients, class_name: 'Claims::MasterClient'
 
     validates_presence_of(
-      :medicaid_id_id,
       :medicaid_id,
       :eligibility_program_code,
       :record_source_date

@@ -7,7 +7,6 @@ module Claims
     belongs_to :master_clients, class_name: 'Claims::MasterClient'
 
     validates_presence_of(
-      :address_id,
       :full_address,
       :record_source_date
     )

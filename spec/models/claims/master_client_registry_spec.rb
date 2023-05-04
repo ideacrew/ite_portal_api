@@ -5,7 +5,6 @@ require 'rails_helper'
 RSpec.describe Claims::MasterClientRegistry, type: :model, dbclean: :around_each do
   let(:master_client_registry_params) do
     {
-      master_client_registry_id: '1',
       master_client_id: 'M-00000001',
       billing_medicaid_id: '70443547',
       billing_patient_account: '67706',
@@ -37,12 +36,6 @@ RSpec.describe Claims::MasterClientRegistry, type: :model, dbclean: :around_each
 
   context 'with a invalid params' do
     context 'will not create an master_client_registry object' do
-      it 'without a master_client_registry_id' do
-        master_client_registry_params[:master_client_registry_id] = nil
-        master_client_registry = described_class.new(master_client_registry_params)
-        expect(master_client_registry.save).to eq false
-      end
-
       it 'without a master_client_id' do
         master_client_registry_params[:master_client_id] = nil
         master_client_registry = described_class.new(master_client_registry_params)

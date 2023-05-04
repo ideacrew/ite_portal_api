@@ -6,7 +6,6 @@ module Claims
     self.table_name = 'master_client_registries'
 
     validates_presence_of(
-      :master_client_registry_id,
       :master_client_id,
       :date_of_birth,
       :full_name,

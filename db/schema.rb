@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_503_173_812) do
+ActiveRecord::Schema[7.0].define(version: 20_230_504_190_418) do
   create_table 'addresses', force: :cascade do |t|
     t.string 'address_line1'
     t.string 'address_line2'
@@ -41,18 +41,15 @@ ActiveRecord::Schema[7.0].define(version: 20_230_503_173_812) do
   end
 
   create_table 'claim_addresses', force: :cascade do |t|
-    t.string 'address_id', null: false
     t.string 'full_address', null: false
     t.date 'record_source_date', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.bigint 'master_client_id', null: false
-    t.index ['address_id'], name: 'index_address_id'
     t.index ['master_client_id'], name: 'index_claim_addresses_on_master_client_id'
   end
 
   create_table 'claim_medicaid_ids', force: :cascade do |t|
-    t.string 'medicaid_id_id', null: false
     t.string 'medicaid_id', null: false
     t.string 'eligibility_program_code', null: false
     t.date 'record_source_date', null: false
@@ -60,18 +57,15 @@ ActiveRecord::Schema[7.0].define(version: 20_230_503_173_812) do
     t.datetime 'updated_at', null: false
     t.bigint 'master_client_id', null: false
     t.index ['master_client_id'], name: 'index_claim_medicaid_ids_on_master_client_id'
-    t.index ['medicaid_id_id'], name: 'index_medicaid_id_id'
   end
 
   create_table 'claim_phone_numbers', force: :cascade do |t|
-    t.string 'phone_number_id', null: false
     t.string 'phone_number', null: false
     t.date 'record_source_date', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.bigint 'master_client_id', null: false
     t.index ['master_client_id'], name: 'index_claim_phone_numbers_on_master_client_id'
-    t.index ['phone_number_id'], name: 'index_phone_number_id'
   end
 
   create_table 'client_profiles', force: :cascade do |t|
@@ -139,11 +133,9 @@ ActiveRecord::Schema[7.0].define(version: 20_230_503_173_812) do
   end
 
   create_table 'denied_claims_with_reasons', force: :cascade do |t|
-    t.string 'claim_id'
     t.string 'claim_tcn', limit: 17, null: false
     t.string 'denial_reason_code', null: false
     t.string 'denial_reason', null: false
-    t.string 'tcn_line_item_number'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['claim_tcn'], name: 'index_claim_tcn'
@@ -188,7 +180,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_503_173_812) do
     t.string 'dw_claim_process_level'
     t.string 'dw_claim_record_id', null: false
     t.string 'dw_claim_tcn', limit: 17
-    t.date 'dw_date_of_birth', null: false
+    t.date 'dw_date_of_birth'
     t.string 'dw_drug_category'
     t.string 'dw_drug_code'
     t.string 'dw_drug_generic_name'
@@ -200,7 +192,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_503_173_812) do
     t.string 'dw_first_name'
     t.string 'dw_full_address'
     t.string 'dw_full_name', null: false
-    t.string 'dw_gender', null: false
+    t.string 'dw_gender'
     t.string 'dw_header_diagnosis_group_key'
     t.date 'dw_last_date_of_service'
     t.string 'dw_last_name'
@@ -532,7 +524,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_503_173_812) do
     t.string 'claim_processing_status'
     t.string 'claim_tcn', limit: 17
     t.string 'claim_type'
-    t.date 'date_of_birth', null: false
+    t.date 'date_of_birth'
     t.string 'drug_category'
     t.string 'drug_code'
     t.string 'drug_generic_name'
@@ -544,7 +536,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_503_173_812) do
     t.string 'first_name'
     t.text 'full_address'
     t.string 'full_name'
-    t.string 'gender', null: false
+    t.string 'gender'
     t.bigint 'header_diagnosis_group_key'
     t.date 'last_date_of_service'
     t.string 'last_name'
@@ -582,14 +574,13 @@ ActiveRecord::Schema[7.0].define(version: 20_230_503_173_812) do
   end
 
   create_table 'master_client_registries', force: :cascade do |t|
-    t.bigint 'master_client_registry_id', null: false
     t.string 'master_client_id', null: false
     t.bigint 'billing_patient_account'
-    t.date 'date_of_birth', null: false
+    t.date 'date_of_birth'
     t.string 'first_name'
     t.text 'full_address'
     t.string 'full_name', null: false
-    t.string 'gender', null: false
+    t.string 'gender'
     t.string 'last_name'
     t.string 'middle_name'
     t.string 'phone_number'
@@ -602,15 +593,14 @@ ActiveRecord::Schema[7.0].define(version: 20_230_503_173_812) do
     t.integer 'billing_medicaid_id'
     t.integer 'billing_provider_id'
     t.index ['master_client_id'], name: 'index_master_client_id'
-    t.index ['master_client_registry_id'], name: 'index_master_client_registry_id'
   end
 
   create_table 'master_clients', force: :cascade do |t|
     t.string 'master_client_id', null: false
-    t.date 'date_of_birth', null: false
+    t.date 'date_of_birth'
     t.string 'first_name'
     t.string 'full_name', null: false
-    t.string 'gender', null: false
+    t.string 'gender'
     t.string 'last_name'
     t.string 'middle_name'
     t.string 'record_source', default: 'master_claims', null: false
@@ -654,7 +644,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_503_173_812) do
     t.string 'full_name', null: false
     t.string 'first_name', null: false
     t.string 'last_name', null: false
-    t.date 'date_of_birth', null: false
+    t.date 'date_of_birth'
     t.string 'current_medicaid_id', null: false
     t.date 'mhgps_start_date', null: false
     t.date 'mhgps_end_date'
@@ -682,13 +672,13 @@ ActiveRecord::Schema[7.0].define(version: 20_230_503_173_812) do
     t.string 'mmis_claim_record_id', null: false
     t.string 'mmis_claim_tcn', limit: 17
     t.string 'mmis_claim_type'
-    t.date 'mmis_date_of_birth', null: false
+    t.date 'mmis_date_of_birth'
     t.string 'mmis_eligibility_program_code'
     t.date 'mmis_first_date_of_service', null: false
     t.string 'mmis_first_name'
     t.string 'mmis_full_address'
     t.string 'mmis_full_name', null: false
-    t.string 'mmis_gender', null: false
+    t.string 'mmis_gender'
     t.date 'mmis_last_date_of_service'
     t.string 'mmis_last_name'
     t.string 'mmis_middle_name'

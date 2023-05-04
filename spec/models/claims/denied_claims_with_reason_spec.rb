@@ -5,11 +5,9 @@ require 'rails_helper'
 RSpec.describe Claims::DeniedClaimsWithReason, type: :model, dbclean: :around_each do
   let(:model_params) do
     {
-      claim_id: '3',
       claim_tcn: '21301381150012687',
       denial_reason_code: '0143',
-      denial_reason: 'BENFC NOT ELIGIBLE/NOT FOUND',
-      tcn_line_item_number: '01'
+      denial_reason: 'BENFC NOT ELIGIBLE/NOT FOUND'
     }
   end
 

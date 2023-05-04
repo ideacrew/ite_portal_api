@@ -7,7 +7,6 @@ RSpec.describe Claims::ClaimMedicaidId, type: :model, dbclean: :around_each do
 
   let(:claim_medicaid_id_params) do
     {
-      medicaid_id_id: '1',
       master_client_id: master_client.id,
       medicaid_id: '123456',
       eligibility_program_code: '774D',
@@ -27,12 +26,6 @@ RSpec.describe Claims::ClaimMedicaidId, type: :model, dbclean: :around_each do
 
   context 'with a invalid params' do
     context 'will not create an claim_medicaid_id object' do
-      it 'without a medicaid_id_id' do
-        claim_medicaid_id_params[:medicaid_id_id] = nil
-        claim_medicaid_id = described_class.new(claim_medicaid_id_params)
-        expect(claim_medicaid_id.save).to eq false
-      end
-
       it 'without a medicaid_id' do
         claim_medicaid_id_params[:medicaid_id] = nil
         claim_medicaid_id_registry = described_class.new(claim_medicaid_id_params)

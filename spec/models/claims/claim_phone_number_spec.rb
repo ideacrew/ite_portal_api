@@ -7,7 +7,6 @@ RSpec.describe Claims::ClaimPhoneNumber, type: :model, dbclean: :around_each do
 
   let(:claim_phone_number_params) do
     {
-      phone_number_id: '1',
       master_client_id: master_client.id,
       phone_number: '8839487303',
       record_source_date: Date.yesterday
@@ -26,12 +25,6 @@ RSpec.describe Claims::ClaimPhoneNumber, type: :model, dbclean: :around_each do
 
   context 'with a invalid params' do
     context 'will not create an claim_phone_number object' do
-      it 'without a phone_number_id' do
-        claim_phone_number_params[:phone_number_id] = nil
-        claim_phone_number = described_class.new(claim_phone_number_params)
-        expect(claim_phone_number.save).to eq false
-      end
-
       it 'without a phone_number' do
         claim_phone_number_params[:phone_number] = nil
         claim_phone_number_registry = described_class.new(claim_phone_number_params)

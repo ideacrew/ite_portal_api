@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_504_190_418) do
+ActiveRecord::Schema[7.0].define(version: 20_230_505_161_637) do
   create_table 'addresses', force: :cascade do |t|
     t.string 'address_line1'
     t.string 'address_line2'
@@ -640,7 +640,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_504_190_418) do
 
   create_table 'mhgps_enrollments', force: :cascade do |t|
     t.string 'mhgps_id', null: false
-    t.string 'medicaid_id'
+    t.integer 'medicaid_id', null: false
     t.string 'full_name', null: false
     t.string 'first_name', null: false
     t.string 'last_name', null: false
@@ -651,6 +651,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_504_190_418) do
     t.string 'phone_number'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.index ['medicaid_id'], name: 'index_mhgps_enrollments_on_medicaid_id'
     t.index ['mhgps_id'], name: 'index_mhgps_id'
   end
 

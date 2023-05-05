@@ -6,6 +6,7 @@ module Claims
     self.table_name = 'mhgps_enrollments'
 
     validates_presence_of(
+      :medicaid_id,
       :mhgps_id,
       :full_name,
       :first_name,

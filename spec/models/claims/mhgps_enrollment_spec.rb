@@ -5,6 +5,7 @@ require 'rails_helper'
 RSpec.describe Claims::MhgpsEnrollment, type: :model, dbclean: :around_each do
   let(:model_params) do
     {
+      medicaid_id: 123,
       mhgps_id: 'RS230003820190926',
       full_name: 'Daniel Crawford',
       first_name: 'Daniel',

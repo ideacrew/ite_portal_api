@@ -3,6 +3,7 @@
 module Claims
   # controller actions for the master claims model
   class MasterClaimsController < ApplicationController
+    before_action :authorize
     before_action :permit_params
 
     def index

@@ -3,6 +3,7 @@
 module Claims
   # controller actions for the master clients model
   class MasterClientsController < ApplicationController
+    before_action :authorize
     before_action :permit_params
 
     def index
@@ -15,6 +16,7 @@ module Claims
     end
 
     def show
+      binding.pry
       @client = Claims::MasterClient.find(params[:id])
       if @client
         render json: @client.attributes

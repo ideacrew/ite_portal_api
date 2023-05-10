@@ -16,7 +16,6 @@ module Claims
     end
 
     def show
-      binding.pry
       @client = Claims::MasterClient.find(params[:id])
       if @client
         render json: @client.attributes

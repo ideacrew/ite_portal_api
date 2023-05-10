@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
 
       render json: { status_text: 'Cannot validate the User', status: 400, content_type: 'application/json' }, status: 400 unless valid_kid
     end
-  rescue StandardError => e
+  rescue StandardError => _e
     render json: { status_text: 'Unable to authorize the User', status: 400, content_type: 'application/json' }, status: 400
   end
 end

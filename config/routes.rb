@@ -9,10 +9,13 @@ ItePortalApi::Application.routes.draw do
         get 'procedure_codes'
       end
     end
+
     resources :master_clients, only: %i[index show] do
       collection do
         get 'claim_history'
       end
     end
+
+    resources :tests, only: %i[index]
   end
 end

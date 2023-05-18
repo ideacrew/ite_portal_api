@@ -23,8 +23,10 @@ module Secured
       valid_kid = jwks_hash.values[0].pluck(:kid).include?(decoded_token.pluck('kid')&.compact&.first)
 
       render json: { status_text: 'Invalid credentials', status: 422, content_type: 'application/json' }, status: 422 unless valid_kid
+    else
+      render json: { status_text: 'No authorization sent', status: 401, content_type: 'application/json' }, status: 401
     end
-  rescue StandardError => _e
-    render json: { status_text: 'Unable to authorize the User', status: 400, content_type: 'application/json' }, status: 400
+  rescue StandardError => e
+    render json: { status_text: e.to_s, variables: "ENV['TID']: #{ENV['TID']}, ENV['APP_ID']: #{ENV['APP_ID']}, ENV['ISS']: #{ENV['ISS']},ENV['AUD']: #{ENV['AUD']}", status: 400, content_type: 'application/json' }, status: 400
   end
 end

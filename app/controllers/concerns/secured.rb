@@ -30,6 +30,6 @@ module Secured
       render json: { status_text: 'Unable to authorize the User', status: 401, content_type: 'application/json' }, status: 401
     end
   rescue StandardError => e
-    render json: { status_text: e.to_s, variables: "ENV['TID']: #{ENV['TID']}, ENV['APP_ID']: #{ENV['APP_ID']}, ENV['ISS']: #{ENV['ISS']},ENV['AUD']: #{ENV['AUD']}", status: 400, content_type: 'application/json' }, status: 400
+    render json: { status_text: e.to_s, status: 400, content_type: 'application/json' }, status: 400
   end
 end

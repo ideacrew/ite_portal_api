@@ -8,7 +8,8 @@ module Secured
     auth_header = request.headers['Authorization']
     if auth_header
       token = auth_header.split(' ')[1]
-      jwks_response = Net::HTTP.get_response URI("https://login.microsoftonline.com/#{ENV['TID']}/discovery/keys?appid=#{ENV['APP_ID']}")
+      uri = "https://login.microsoftonline.com/#{ENV['TID']}/discovery/keys?appid=#{ENV['APP_ID']}"
+      jwks_response = Net::HTTP.get_response URI(uri)
       jwks_hash = JSON.parse(jwks_response.body).deep_symbolize_keys
 
       decoded_token = JWT.decode(token, nil, true, {

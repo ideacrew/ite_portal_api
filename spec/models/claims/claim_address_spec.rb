@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Claims::ClaimAddress, type: :model, dbclean: :around_each do
+RSpec.describe Claims::ClaimAddress, type: :model, dbclean: :before_each do
   let(:master_client) { FactoryBot.create(:master_client) }
 
   let(:claim_address_params) do

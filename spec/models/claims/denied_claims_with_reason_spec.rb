@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Claims::DeniedClaimsWithReason, type: :model, dbclean: :around_each do
+RSpec.describe Claims::DeniedClaimsWithReason, type: :model, dbclean: :before_each do
   let(:model_params) do
     {
       claim_tcn: '21301381150012687',

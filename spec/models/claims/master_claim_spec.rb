@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Claims::MasterClaim, type: :model, dbclean: :around_each do
+RSpec.describe Claims::MasterClaim, type: :model, dbclean: :before_each do
   let(:master_claim_params) do
     {
       claim_record_id: '21337382200155227-01',

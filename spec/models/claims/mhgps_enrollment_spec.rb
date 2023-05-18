@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Claims::MhgpsEnrollment, type: :model, dbclean: :around_each do
+RSpec.describe Claims::MhgpsEnrollment, type: :model, dbclean: :before_each do
   let(:model_params) do
     {
       medicaid_id: 123,

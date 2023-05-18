@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Claims::MedicaidProvider, type: :model, dbclean: :around_each do
+RSpec.describe Claims::MedicaidProvider, type: :model, dbclean: :before_each do
   let(:model_params) do
     {
       dhcf_system_provider_id: '465',

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Claims::MasterClientRegistry, type: :model, dbclean: :around_each do
+RSpec.describe Claims::MasterClientRegistry, type: :model, dbclean: :before_each do
   let(:master_client_registry_params) do
     {
       master_client_id: 'M-00000001',

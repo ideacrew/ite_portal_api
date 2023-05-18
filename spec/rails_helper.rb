@@ -31,10 +31,16 @@ require_relative 'support/factory_bot'
 RSpec.configure do |config|
   # Remove this line to enable support for ActiveRecord
   # config.use_active_record = false
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+    DatabaseCleaner.strategy = :transaction
+  end
 
-  config.around(:example, dbclean: :around_each) do |example|
-    DatabaseCleaner.clean
-    example.run
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
     DatabaseCleaner.clean
   end
 

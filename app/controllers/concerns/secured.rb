@@ -6,8 +6,8 @@ module Secured
 
   def authorize
     auth_header = request.headers['Authorization']
-    token = auth_header.split(' ')[1]
     if auth_header
+      token = auth_header.split(' ')[1]
       jwks_response = Net::HTTP.get_response URI("https://login.microsoftonline.com/#{ENV['TID']}/discovery/keys?appid=#{ENV['APP_ID']}")
       jwks_hash = JSON.parse(jwks_response.body).deep_symbolize_keys
 

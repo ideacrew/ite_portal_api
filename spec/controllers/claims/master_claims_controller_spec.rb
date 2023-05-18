@@ -35,4 +35,43 @@ RSpec.describe Claims::MasterClaimsController, dbclean: :around_each do
       expect(JSON.parse(response.body)['status_text']).to eq 'Unable to authorize the User'
     end
   end
+
+  context 'GET show' do
+    it 'When user is provider' do
+      expect_any_instance_of(Claims::MasterClaimsController).to receive(:authorize).and_return(true)
+      get :show, params: { id: claim.id }
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'When user is not authorized' do
+      get :show, params: { id: claim.id }
+      expect(JSON.parse(response.body)['status_text']).to eq 'Unable to authorize the User'
+    end
+  end
+
+  context 'procedure_codes show' do
+    it 'When user is provider' do
+      expect_any_instance_of(Claims::MasterClaimsController).to receive(:authorize).and_return(true)
+      get :procedure_codes
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'When user is not authorized' do
+      get :procedure_codes
+      expect(JSON.parse(response.body)['status_text']).to eq 'Unable to authorize the User'
+    end
+  end
+
+  context 'provider_types show' do
+    it 'When user is provider' do
+      expect_any_instance_of(Claims::MasterClaimsController).to receive(:authorize).and_return(true)
+      get :provider_types
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'When user is not authorized' do
+      get :provider_types
+      expect(JSON.parse(response.body)['status_text']).to eq 'Unable to authorize the User'
+    end
+  end
 end

@@ -22,7 +22,7 @@ module Claims
       if codes
         render json: codes
       else
-        ender json: { status_text: 'No procedure codes found', status: 400, content_type: 'application/json' }, status: 400
+        render json: { status_text: 'No procedure codes found', status: 400, content_type: 'application/json' }, status: 400
       end
     end
 
@@ -31,7 +31,7 @@ module Claims
       if types
         render json: types
       else
-        ender json: { status_text: 'No provider types found', status: 400, content_type: 'application/json' }, status: 400
+        render json: { status_text: 'No provider types found', status: 400, content_type: 'application/json' }, status: 400
       end
     end
 

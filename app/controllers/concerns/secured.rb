@@ -3,6 +3,8 @@
 # Secured authorization
 module Secured
   extend ActiveSupport::Concern
+  require 'net/http'
+  require 'net/https'
 
   def authorize
     auth_header = request.headers['Authorization']

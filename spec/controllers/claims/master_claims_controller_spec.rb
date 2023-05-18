@@ -31,7 +31,7 @@ RSpec.describe Claims::MasterClaimsController, dbclean: :around_each do
 
     it 'When user is not authorized' do
       get :index, params: { search: '21337382200155228' }
-      expect(response.status).to eq 400
+      expect(response.status).to eq 401
       expect(JSON.parse(response.body)['status_text']).to eq 'Unable to authorize the User'
     end
   end

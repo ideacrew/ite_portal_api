@@ -14,6 +14,8 @@ default: &default
   username: sa
   password: <%= ENV["SA_PASSWORD"] %>
   host: localhost
+  timeout: 3600000 # 1 hour for testing!
+  azure: <%= ENV["ITE_PORTAL_API_DATABASE_USE_AZURE"] || false %>
 
 development:
   <<: *default
@@ -55,6 +57,8 @@ test:
 production:
   <<: *default
   dataserver: <%= ENV["ITE_PORTAL_API_DATABASE_HOST"] %>
+  host: <%= ENV["ITE_PORTAL_API_DATABASE_HOST"] %>
+  port: <%= ENV["ITE_PORTAL_API_DATABASE_PORT"] || 1433 %>
   database: <%= ENV["ITE_PORTAL_API_DATABASE_DATABASE"] %>
   username: <%= ENV["ITE_PORTAL_API_DATABASE_USERNAME"] %>
   password: <%= ENV["ITE_PORTAL_API_DATABASE_PASSWORD"] %>

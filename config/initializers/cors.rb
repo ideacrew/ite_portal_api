@@ -9,6 +9,7 @@
 
 domains = [
   'dbh-ite.com',
+  'dbhite.com',
   'github.dev',
   'githubpreview.dev',
   'preview.app.github.dev'

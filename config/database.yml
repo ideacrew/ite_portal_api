@@ -19,7 +19,7 @@ default: &default
 
 development:
   <<: *default
-  dataserver: '<%= ENV["ITE_PORTAL_API_DATABASE_HOST"] %>'
+  dataserver: "<%= ENV["ITE_PORTAL_API_DATABASE_HOST"] %>"
   database: <%= ENV["ITE_PORTAL_API_DATABASE_DATABASE"] %>
   username: <%= ENV["ITE_PORTAL_API_DATABASE_USERNAME"] %>
   password: <%= ENV["ITE_PORTAL_API_DATABASE_PASSWORD"] %>
@@ -29,7 +29,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  dataserver: '<%= ENV["ITE_PORTAL_API_DATABASE_HOST"] %>'
+  dataserver: "<%= ENV["ITE_PORTAL_API_DATABASE_HOST"] %>"
   database: <%= ENV["ITE_PORTAL_API_DATABASE_DATABASE"] %>
   username: <%= ENV["ITE_PORTAL_API_DATABASE_USERNAME"] %>
   password: <%= ENV["ITE_PORTAL_API_DATABASE_PASSWORD"] %>
@@ -56,8 +56,8 @@ test:
 #
 production:
   <<: *default
-  dataserver: '<%= ENV["ITE_PORTAL_API_DATABASE_HOST"] %>'
-  host: '<%= ENV["ITE_PORTAL_API_DATABASE_HOST"] %>'
+  dataserver: "<%= ENV["ITE_PORTAL_API_DATABASE_HOST"] %>"
+  host: "<%= ENV["ITE_PORTAL_API_DATABASE_HOST"] %>"
   port: <%= ENV["ITE_PORTAL_API_DATABASE_PORT"] || 1433 %>
   database: <%= ENV["ITE_PORTAL_API_DATABASE_DATABASE"] %>
   username: <%= ENV["ITE_PORTAL_API_DATABASE_USERNAME"] %>

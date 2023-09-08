@@ -86,7 +86,7 @@ COPY --chown=nonroot:nonroot . $HOME
 
 USER nonroot
 
-ENV PORT=${PORT:-3000}
-EXPOSE 3000
+ENV PORT=${PORT:-3001}
+EXPOSE 3001
 
 CMD env && bin/rails db:create && bin/rails db:migrate && bundle exec rails s -b 0.0.0.0 -p $PORT 

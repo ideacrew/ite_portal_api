@@ -89,4 +89,4 @@ USER nonroot
 ENV PORT=${PORT:-3001}
 EXPOSE 3001
 
-CMD env && sleep 99999999 && && bin/rails db:prepare && bundle exec rails s -b 0.0.0.0 -p $PORT 
+CMD env && sleep 99999999 && bin/rails db:prepare && bundle exec rails s -b 0.0.0.0 -p $PORT 

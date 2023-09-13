@@ -17,14 +17,24 @@ RUN apt-get update \
       unzip \
       zip \
       zlibc \
-      freetds-dev \
-      telnet \
-      netcat \
-    && apt-get clean \
+      freetds-dev
+
+## For Debug
+## https://learn.microsoft.com/en-us/sql/linux/sql-server-linux-setup-tools?view=sql-server-ver16&tabs=ubuntu-install
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc \
+    && curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
+RUN apt-get update \
+    && apt-get install -y mssql-tools18 unixodbc-dev
+RUN echo 'export PATH="$PATH:/opt/mssql-tools18/bin"' >> ~/.bash_profile
+RUN echo 'export PATH="$PATH:/opt/mssql-tools18/bin"' >> ~/.bashrc
+## telnet & nc
+RUN apt-get install -y telnet netcat
+
+## Apt Cleanup
+RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && truncate -s 0 /var/log/*log
-
-
+    
 ENV GEM_HOME=/usr/local/bundle
 ENV BUNDLE_PATH=$GEM_HOME
 ENV BUNDLE_APP_CONFIG=$BUNDLE_PATH

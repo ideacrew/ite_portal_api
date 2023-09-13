@@ -34,6 +34,8 @@ RUN echo 'export PATH="$PATH:/opt/mssql-tools18/bin"' >> ~/.bashrc
 RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && truncate -s 0 /var/log/*log
+
+RUN echo "10.57.76.134 dbh-prod.privatelink.database.windows.net" >> /etc/hosts
     
 ENV GEM_HOME=/usr/local/bundle
 ENV BUNDLE_PATH=$GEM_HOME
@@ -51,7 +53,6 @@ RUN gem install bundler -v 2.2.14
 
 RUN groupadd --gid 1001 nonroot \
   && useradd --uid 1001 --gid nonroot --shell /bin/bash --create-home nonroot
-
 
 RUN mkdir $HOME \
   && chown -R nonroot:nonroot $HOME

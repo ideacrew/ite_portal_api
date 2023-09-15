@@ -35,7 +35,7 @@ RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && truncate -s 0 /var/log/*log
 
-RUN echo "10.57.76.134 dbh-prod.privatelink.database.windows.net" >> /etc/hosts
+## RUN echo "10.57.76.134 dbh-prod.privatelink.database.windows.net" >> /etc/hosts
     
 ENV GEM_HOME=/usr/local/bundle
 ENV BUNDLE_PATH=$GEM_HOME

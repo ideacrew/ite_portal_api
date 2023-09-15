@@ -93,13 +93,12 @@ RUN bundle config set --local without 'development test' \
 
 FROM base as deploy
 
-
 COPY --chown=nonroot:nonroot --from=prod_gems_and_assets $BUNDLE_PATH $BUNDLE_PATH
 COPY --chown=nonroot:nonroot . $HOME
 
-USER nonroot
+# USER nonroot
 
 ENV PORT=${PORT:-3001}
 EXPOSE 3001
 
-CMD env && sleep 99999999 && bin/rails db:prepare && bundle exec rails s -b 0.0.0.0 -p $PORT 
+CMD env && echo "10.57.76.134 dbh-prod.privatelink.database.windows.net" >> /etc/hosts && sleep 99999999 && bin/rails db:prepare && bundle exec rails s -b 0.0.0.0 -p $PORT 

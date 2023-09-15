@@ -21,7 +21,7 @@ RUN apt-get update \
 
 ## For Debug
 ## telnet & nc
-RUN apt-get install -y curl telnet netcat
+RUN apt-get install -y curl telnet netcat dnsutils
 ## https://learn.microsoft.com/en-us/sql/linux/sql-server-linux-setup-tools?view=sql-server-ver16&tabs=ubuntu-install
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | tee /etc/apt/trusted.gpg.d/microsoft.asc \
     && curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list > /etc/apt/sources.list.d/mssql-release.list

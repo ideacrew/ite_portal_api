@@ -12,14 +12,13 @@ domains = [
   'dbhite.com',
   'github.dev',
   'githubpreview.dev',
-  'preview.app.github.dev'
+  'preview.app.github.dev',
+  'provider.dbh.dc.gov'
 ].join('|')
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     origins '*'
-    # resource '/api/v1/extracts/ingest', headers: :any, methods: %i[post]
-    # resource '/session', headers: :any, methods: %i[post delete]
   end
 
   if Rails.env.development?

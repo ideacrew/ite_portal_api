@@ -13,7 +13,7 @@ default: &default
   encoding: utf8
   username: sa
   password: <%= ENV["SA_PASSWORD"] %>
-  host: localhost
+  host: database
   timeout: 3600000 # 1 hour for testing!
   azure: <%= ENV["ITE_PORTAL_API_DATABASE_USE_AZURE"] || false %>
 

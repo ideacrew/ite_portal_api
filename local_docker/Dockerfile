@@ -20,9 +20,6 @@ RUN apt-get update \
 
 ENV HOME=/dbh
 
-RUN gem update --system
-RUN gem install bundler -v 2.2.14
-
 RUN mkdir $HOME
 
 WORKDIR $HOME
@@ -41,7 +38,8 @@ RUN apt-get update -qq \
 
 COPY . $HOME
 
-RUN bundle config set --local without 'production' \
-  && bundle install
+RUN gem install bundler -v 2.3.26
+
+RUN bundle install
 
 CMD ["rails", "server", "-b", "0.0.0.0"]

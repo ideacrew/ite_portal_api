@@ -46,3 +46,6 @@
 *.docx
 
 !/spec/test_data/BHSD_Sample_PRD15-Jan-Admission.csv
+
+#ignore .env file so everyone can have their own
+.env

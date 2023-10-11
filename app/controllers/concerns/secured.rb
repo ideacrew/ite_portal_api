@@ -25,11 +25,21 @@ module Secured
 
       valid_kid = jwks_hash.values[0].pluck(:kid).include?(decoded_token.pluck('kid')&.compact&.first)
 
-      render json: { status_text: 'Invalid credentials', status: 422, content_type: 'application/json' }, status: 422 unless valid_kid
+      @current_user = check_or_create_user(decoded_token.first['preferred_username'])
+      render json: { status_text: 'Invalid credentials', status: 422, content_type: 'application/json' }, status: 422 unless valid_kid && @current_user
     else
       render json: { status_text: 'Unable to authorize the User', status: 401, content_type: 'application/json' }, status: 401
     end
   rescue StandardError => e
     render json: { status_text: e.to_s, status: 400, content_type: 'application/json' }, status: 400
+  end
+
+  private
+
+  def check_or_create_user(username)
+    existing_user = UserList.where(email: username)&.first
+    return existing_user if existing_user
+
+    nil
   end
 end

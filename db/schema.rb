@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_505_161_637) do
+ActiveRecord::Schema[7.0].define(version: 20_231_011_181_120) do
   create_table 'addresses', force: :cascade do |t|
     t.string 'address_line1'
     t.string 'address_line2'
@@ -772,6 +772,12 @@ ActiveRecord::Schema[7.0].define(version: 20_230_505_161_637) do
     t.integer 'substance_order'
     t.string 'substance_use_route'
     t.string 'provider_gateway_id'
+  end
+
+  create_table 'user_lists', force: :cascade do |t|
+    t.string 'email'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
   add_foreign_key 'addresses', 'clients', column: 'clients_id'

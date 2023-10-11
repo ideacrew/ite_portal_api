@@ -64,6 +64,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
   # awesome print to make the payloads easier to visually parse
   gem 'awesome_print', '~> 1.9', '>= 1.9.2'
+  gem 'dotenv-rails'
+  gem 'pry-rails', '~> 0.3.4'
 end
 
 group :development do

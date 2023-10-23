@@ -16,8 +16,8 @@ ItePortalApi::Application.routes.draw do
       end
     end
 
-    get '/health_check', to: proc { [200, {}, ['success']] }
-
     resources :tests, only: %i[index]
   end
+
+  get '/health_check', to: proc { [200, {}, ['success']] }
 end

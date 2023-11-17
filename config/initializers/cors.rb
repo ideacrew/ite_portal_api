@@ -13,7 +13,8 @@ domains = [
   'github.dev',
   'githubpreview.dev',
   'preview.app.github.dev',
-  'provider.dbh.dc.gov'
+  'provider.dbh.dc.gov',
+  'ite.dbh.dc.gov'
 ].join('|')
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do

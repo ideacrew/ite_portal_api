@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_231_011_181_120) do
+ActiveRecord::Schema[7.0].define(version: 20_231_204_213_251) do
   create_table 'addresses', force: :cascade do |t|
     t.string 'address_line1'
     t.string 'address_line2'
@@ -569,6 +569,7 @@ ActiveRecord::Schema[7.0].define(version: 20_231_011_181_120) do
     t.decimal 'paid_amount', precision: 18, scale: 2
     t.integer 'billing_medicaid_id'
     t.integer 'billing_provider_id'
+    t.string 'rendering_provider_id'
     t.index ['claim_record_id'], name: 'index_claim_record_id'
     t.index ['claim_tcn'], name: 'index_master_claims_on_claim_tcn'
   end
